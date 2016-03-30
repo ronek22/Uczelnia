@@ -1,0 +1,42 @@
+
+1. Samochod: 
+Marka: Fiat
+Model: Punto
+Rocznik: 1995
+Przebieg: 60000
+Pojemnosc silnika: 1.60
+
+2. Samochod: 
+Marka: Ferrari
+Model: Enzo
+Rocznik: 1996
+Przebieg: 20000
+Pojemnosc silnika: 8.64
+
+1. Samochod: 
+Marka: Honda
+Model: Civic
+Rocznik: 2007
+Przebieg: 20000
+Pojemnosc silnika: 2.00
+
+2. Samochod: 
+Marka: Audi
+Model: A7
+Rocznik: 2005
+Przebieg: 12000
+Pojemnosc silnika: 2.20
+
+3. Samochod: 
+Marka: Porsche
+Model: Boxer
+Rocznik: 2005
+Przebieg: 42211
+Pojemnosc silnika: 4.20
+
+4. Samochod: 
+Marka: Lamborghini
+Model: Aventador
+Rocznik: 2011
+Przebieg: 100
+Pojemnosc silnika: 8.20
