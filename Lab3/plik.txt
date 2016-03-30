@@ -1,0 +1,432 @@
+MAN(1)                                                                                                     Narzędzia przeglądarki stron podręcznika ekranowego                                                                                                    MAN(1)
+
+
+
+NAZWA
+       man - interfejs stron podręcznika ekranowego
+
+SKŁADNIA
+       man  [-C  file]  [-d]  [-D] [--warnings[=ostrzeżenia]] [-R kodowanie_znaków] [-L ustawienia_językowe] [-m system[,...]] [-M path] [-S list] [-e rozszerzenie] [-i|-I] [--regex|--wildcard] [--names-only] [-a] [-u] [--no-subpages] [-P pager] [-r linia_zachęty]
+       [-7] [-E kodowanie_znaków] [--no-hyphenation] [--no-justification] [-p łańcuch_znaków] [-t] [-T[urządzenie]] [-H[przeglądarka]] [-X[dpi]] [-Z] [[sekcja] strona ...] ...
+       man -k [opcje_apropos] wyraż_regularne ...
+       man -K [-w|-W] [-S lista] [-i|-I] [--regex] [strona] termin ...
+       man -f [opcje_whatis] strona ...
+       man -l [-C plik] [-d] [-D] [--warnings[=ostrzeżenia]] [-R kodowanie_znaków] [-L ustawienia_językowe] [-P pager] [-r linia_zachęty] [-7] [-E kodowanie_znaków] [-p łańcuch_znaków] [-t] [-T[urządzenie]] [-H[przeglądarka]] [-X[dpi]] [-Z] plik ...
+       man -w|-W [-C plik] [-d] [-D] strona ...
+       man -c [-C plik] [-d] [-D] strona ...
+       man [-?V]
+
+OPIS
+       Program man jest systemową przeglądarką stron podręcznika ekranowego. Każdy argument strona przekazany programowi man jest zazwyczaj nazwą programu, narzędzia użytkowego lub funkcji. man wyszukuje i wyświetla strony podręcznika skojarzone z tym  argumentem.
+       Sekcja,  jeśli  ją  podano,  spowoduje,  że  man  będzie przeszukiwał tylko tę sekcję podręcznika. Domyślnie wyszukuje we wszystkich dostępnych sekcjach, używając predefiniowanego porządku (domyślnie "1 n l 8 3 2 3posix 3pm 3perl 5 4 9 6 7", chyba że został
+       nadpisany w polu SECTION w /etc/manpath.config) i pokazuje tylko pierwszą znalezioną stronę, nawet jeśli podana strona jest dostępna w kilku sekcjach.
+
+       Poniższa tabela pokazuje numery sekcji wraz z opisem odpowiadających im typów stron, które zawierają.
+
+
+       1   Programy wykonywalne lub polecenia powłoki
+       2   Wywołania systemowe (funkcje dostarczane przez jądro systemu)
+       3   Wywołania biblioteczne (funkcje w bibliotekach programów)
+       4   Pliki specjalne (które zazwyczaj można znaleźć w /dev)
+       5   Formaty plików i konwencje, np. /etc/passwd
+       6   Gry
+       7   Różnorodne (łącznie z pakietami makr i konwencjami), np. man(7), groff(7)
+       8   Polecenia do administracji systemem (zazwyczaj tylko dla administratora)
+       9   Wywołania jądra [Niestandardowa]
+
+       Strona podręcznika składa się z kilku sekcji.
+
+       Zgodnie z tradycją nazwy sekcji zawierają NAZWA (NAME), SKŁADNIA (SYNOPSIS), KONFIGURACJA (CONFIGURATION), OPIS (DESCRIPTION), OPCJE (OPTIONS), KOD ZAKOŃCZENIA (EXIT STATUS), WARTOŚĆ ZWRACANA (RETURN VALUE), BŁĘDY (ERRORS), ŚRODOWISKO  (ENVIRONMENT),  PLIKI
+       (FILES), WERSJE (VERSIONS), ZGODNE Z (CONFORMING TO), UWAGI (NOTES), BŁĘDY (BUGS), PRZYKŁAD (EXAMPLE), AUTORZY (AUTHORS) oraz ZOBACZ TAKŻE (SEE ALSO).
+
+       Poniższe konwencje mają zastosowanie do sekcji SKŁADNIA, ale mogą być traktowane jako przewodnik po innych sekcjach.
+
+
+       tekst pogrubiony   wprowadź dokładnie tak, jak pokazano.
+       kursywa            zastąp odpowiednim argumentem.
+       [-abc]             wszystkie argumenty w [ ] są opcjonalne.
+       -a|-b              opcji rozdzielonych znakiem | nie można łączyć.
+       argument ...       argument można powtarzać.
+       [wyrażenie] ...    całe wyrażenie w [ ] można powtarzać.
+
+       Sposób,  w  jaki  będzie  wyświetlona  strona  podręcznika,  zależy  od  urządzenia wyjściowego. Na przykład man zazwyczaj nie będzie mógł wyświetlić czcionki kursywej, jeśli jest uruchomiony na terminalu, więc zamiast niej użyje podkreśleń lub zmieni kolor
+       czcionki.
+
+       Przykłady użycia polecenia lub funkcji powinny zawierać wszystkie możliwe wywołania. W pewnych przypadkach doradza się obrazować wykluczające się wywołania w taki sposób, jak to zrobiono w sekcji SKŁADNIA tej strony podręcznika ekranowego.
+
+PRZYKŁADY
+       man ls
+           Wyświetla stronę podręcznika ekranowego dla danej pozycji (programu) ls.
+
+       man -a intro
+           Wyświetla kolejno wszystkie dostępne strony podręcznika intro. Można przerwać wyświetlanie pomiędzy kolejnymi stronami lub pominąć którąkolwiek z nich.
+
+       man -t alias | lpr -Pps
+           Formatuje stronę podręcznika opisaną przez "alias", czyli zazwyczaj stronę podręcznika powłoki, przy pomocy domyślnego formatu troff lub groff i wysyła ją do drukarki nazwanej ps. Domyślnym wyjściem groffa jest zazwyczaj  PostScript.  man  --help  poda,
+           który procesor jest przypisany do opcji -t.
+
+       man -l -Tdvi ./foo.1x.gz > ./foo.1x.dvi
+           To  polecenie  rozpakuje i sformatuje źródła nroff strony podręcznika ./foo.1x.gz do pliku niezależnego od urządzenia (dvi). Przekierowanie jest konieczne, ponieważ opcja -T powoduje, że wyjście będzie wysłane bezpośrednio do stdout, bez użycia programu
+           pager. Wyjście można przeglądać programem takim jak xdvi albo przetworzyć do PostScriptu, używając na przykład dvips.
+
+       man -k printf
+           Szuka słowa kluczowego printf jako wyrażenia regularnego w  krótkich opisach i nazwach stron podręcznika. Wyświetla wszystkie dopasowania. Odpowiednik apropos -r printf.
+
+       man -f smail
+           Wyszukuje strony podręcznika opisane przez smail i wyświetla krótki opis każdej ze znalezionych stron. Odpowiednik whatis -r smail.
+
+WPROWADZENIE
+       man udostępnia wiele opcji, aby dostosować się do wymagań użytkownika najlepiej, jak to jest tylko możliwe. Pozwala zmienić ścieżkę wyszukiwania, kolejność sekcji, program do przetwarzania stron i inne zachowania oraz operacje, jak to opisano poniżej
+
+       Na działanie programu man mają wpływ różne zmienne środowiskowe, jeśli tylko zostaną ustawione. Możliwe jest nadanie "wyłapującej wszystko" zmiennej $MANOPT wartości będącej łańcuchem znaków w formacie argumentów linii poleceń, z tym wyjątkiem że  wszystkie
+       spacje  użyte  jako  argumenty opcji muszą zostać poprzedzone znakiem odwrotnego ukośnika. man przetworzy $MANOPT przed odczytaniem linii poleceń, tak że opcje wymagające argumentu będą nadpisane przez takie same opcje podane w linii poleceń. Aby przywrócić
+       domyślne wartości wszystkich opcji ustawionych w $MANOPT, można użyć opcji -D, podanej jako pierwsza opcja linii poleceń. Opcja ta pozwala programowi man "zapomnieć" o opcjach podanych w $MANOPT, które jednakże wciąż muszą być poprawne.
+
+       Programy użytkowe podręcznika ekranowego, znajdujące się w pakiecie man-db w znacznym stopniu wykorzystują indeksowane bufory baz danych, które zawierają między innymi informacje o lokalizacji każdej ze stron podręcznika w systemie plików czy  o  zawartości
+       whatis  (krótkiego  jednoliniowego  opisu  strony  podręcznika) i pozwalają programowi man działać szybciej, niż gdyby musiał za każdym razem wyszukiwać odpowiednie strony podręcznika w systemie plików. Jeżeli tego zażądano, podając opcję -u, to man zapewni
+       ciągłą spójność buforów, co eliminuje potrzebę ręcznego uruchamiania oprogramowania aktualizującego tradycyjne tekstowe bazy danych whatis.
+
+       Jeżeli man nie będzie mógł znaleźć zainicjowanej przez mandb indeksowanej bazy danych dla pewnej hierarchii stron podręcznika, to wciąż będzie przeszukiwał tę hierarchię, chociaż  w takim wypadku będzie potrzebne użycie przeszukiwania sytemu  plików.  Jeśli
+       whatis lub apropos nie znajdą indeksu, będą próbowały znaleźć potrzebne informacje w tradycyjnej bazie danych whatis.
+
+       Narzędzia pakietu obsługują spakowane pliki źródłowe nroff, mające rozszerzenia .Z, .z i .gz. Podczas kompilacji pakietu możliwe jest dodanie obsługi dowolnego rozszerzenia plików skompresowanych. Także, domyślnie, wszystkie preformatowane strony "cat" będą
+       kompresowane programem gzip. Każda "globalna" hierarchia stron podręcznika, taka jak /usr/share/man lub /usr/X11R6/man, może mieć dowolny katalog jako katalog jej stron preformatowanych. Zgodnie  z  tradycją,  strony  "cat"  są  przechowywane  w  tej  samej
+       hierarchii  co  strony  podręcznika,  ale  z  powodów określonych w Standardzie hierarchii plików (FHS), lepiej jest je przechowywać w innym miejscu. Szczegóły, jak to zrobić można znaleźć w manpath(5). Informacji, po co to robić, dostarcza wymieniony wyżej
+       standard.
+
+       Pakiet obsługuje również strony w innych językach niż angielski. Strony takie są dostępne (jeśli znajdują się w systemie) przez użycie funkcji ustawień językowych (locale). Aby włączyć tę obsługę należy zmienne $LC_MESSAGES,  $LANG  albo  inne,  zależne  od
+       systemu, ustawić na kod języka w poniższym formacie opisanym w standardzie POSIX 1003.1:
+
+       <język>[_<terytorium>[.<zestaw_znaków>[,<wersja>]]]
+
+       Jeżeli odpowiednia strona jest dostępna w Twoich ustawieniach_językowych, to będzie wyświetlona zamiast wersji standardowej (czyli zazwyczaj amerykańskiej).
+
+       Obsługa międzynarodowych katalogów wiadomości, która jest również jedną z zalet pakietu, może być aktywowana w dokładnie ten sam sposób, oczywiście jeżeli katalogi wiadomości są dostępne. Jeśli strony podręcznika i komunikaty nie są dostępne w Twoim języku,
+       a chciałbyś je dodać, prosimy o kontakt z opiekunem pakietu, który będzie koordynował tłumaczenia.
+
+       Informacje o innych zaletach pakietu i rozszerzeniach w nim dostępnych znajdują się w dokumentacji do niego dołączanej.
+
+ZACHOWANIA DOMYŚLNE
+       man poszukuje żądanych stron podręcznika w indeksie bufora bazy danych. Jeżeli podano opcję -u, to przeprowadzane jest sprawdzanie spójności bufora, aby zapewnić, że baza danych odzwierciedla system plików. Jeżeli zawsze używa  się  tej  opcji,  to  nie  ma
+       potrzeby  powtórnego  uruchamiania polecenia mandb po tym, jak bazy zostały utworzone, chyba że została uszkodzona. Jednakże sprawdzanie spójności może działać powoli w systemach, w których zainstalowano wiele stron podręcznika ekranowego, dlatego też opcja
+       ta jest domyślnie wyłączona; administratorzy systemu mogą uruchamiać mandb na przykład co tydzień, aby utrzymać spójność baz danych. Aby zapobiec problemom powodowanym przez przestarzały indeks bazy danych, w razie gdy man  nie  znajdzie  żądanej  strony  w
+       buforze, podejmie próbę wyszukania strony w rzeczywistym systemie plików, tak jakby bufor bazy danych nie był obecny.
+
+       Po  znalezieniu  strony  podręcznika,  sprawdzane  jest,  czy  istnieje  odpowiedni  poprzednio sformatowany plik "cat", nowszy niż plik źródłowy nroff. Jeżeli istnieje i jest nowszy, to ten preformatowany plik jest (zazwyczaj) rozpakowywany i wyświetlany w
+       przeglądarce tekstu (ang. pager). Program ten można podać na kilka różnych sposobów, a jeśli się go nie poda, to zostanie użyta wartość domyślna (szczegóły można znaleźć w opisie opcji -P). Jeżeli nie znaleziono strony preformatowanej lub jest  starsza  niż
+       plik źródłowy nroff, to ten plik nroff jest filtrowany za pomocą różnych programów, a następnie pokazywany.
+
+       Jeżeli może zostać utworzony plik "cat" (istnieje odpowiedni katalog mający odpowiednie prawa dostępu), to man skompresuje i zachowa plik "cat", działając w tle.
+
+       Filtry  są  rozszyfrowywane  na  wiele  sposób. Najpierw brana jest pod uwagę opcja linii poleceń -p lub wartość zmiennej środowiskowej $MANROFFSEQ. Jeżeli nie podano -p, ani nie ustawiono zmiennej środowiska, to przetwarzana jest początkowa linia źródłowej
+       strony nroff w poszukiwaniu poprawnego oznaczenia preprocesora. Aby man znalazł poprawne oznaczenie preprocesora, pierwsza linia musi składać się z
+
+       '\" <łańcuch_znaków>
+
+       gdzie łańcuch_znaków może być dowolną kombinacją liter opisanych poniżej w opcji -p.
+
+       Jeżeli żadna z powyższych metod nie dostarczy żadnych informacji o filtrowaniu, to będzie użyty zbiór domyślny.
+
+       Z filtrów i podstawowego programu formatującego (nroff lub [tg]roff z -t)tworzony jest potok formatujący, który następnie jest wykonywany. Alternatywnie, jeżeli w korzeniu drzewa hierarchii man znajduje się  program wykonywalny mandb_nfmt  (lub  mandb_tfmt,
+       gdy -t), to jest on wykonywany zamiast potoku. Dostaje on na wejście źródło strony podręcznika, łańcuch znaków preprocesora i opcjonalnie nazwę urządzenia podaną w argumentach opcji -T lub -E.
+
+OPCJE
+       Opcje, które nie wymagają argumentu, a są zduplikowane albo w linii poleceń, albo w $MANOPT, albo w obu, nie czynią żadnej szkody. W przypadku opcji, które wymagają argumentu, każde powtórne ich użycie nadpisze poprzednią wartość tego argumentu.
+
+   Opcje ogólne
+       -C plik, --config-file=plik
+              Używa podanego pliku konfiguracyjnego użytkownika zamiast domyślnego ~/.manpath.
+
+       -d, --debug
+              Wyświetla informację diagnostyczną (debug).
+
+       -D, --default
+              Ta opcja powinna być zazwyczaj podana jako pierwsza, gdyż przywraca domyślne zachowanie programu man. Jej zastosowaniem jest wyłączenie tych opcji ustawionych w $MANOPT. Wszystkie opcje następujące po -D będą miały swoje normalne znaczenie.
+
+       --warnings[=ostrzeżenia]
+              Włącza ostrzeżenia programu groff. Można użyć tej opcji, aby sprawdzić poprawność tekstu źródłowego stron podręcznika ekranowego. ostrzeżenia to rozdzielona przecinkami lista nazw ostrzeżeń; jeśli nie jest podana, to przyjmowana jest wartość domyślna
+              - "mac". Listę dostępnych ostrzeżeń można znaleźć w  info groff, sekcja “Ostrzeżenia”.
+
+   Główne tryby działania
+       -f, --whatis
+              Odpowiednik whatis. Wyświetla krótki opis strony podręcznika, jeśli jest dostępna. Szczegóły można znaleźć w whatis(1).
+
+       -k, --apropos
+              Odpowiednik apropos. Wyszukuje krótki opis stron podręcznika pasujących dla zadanych słów kluczowych i wyświetla wszystkie dopasowania. Szczegóły można znaleźć w apropos(1).
+
+       -K, --global-apropos
+              Szuka tekstu we wszystkich stronach podręcznika ekranowego. Jest to przeszukiwanie siłowe (brute-force), więc czasochłonne. Jeśli jest to możliwe, prosimy o podanie numeru sekcji,  aby  zmniejszyć  liczbę  przeszukiwanych  stron  podręcznika.  Klucze
+              wyszukiwania mogą być zwykłymi łańcuchami znaków (domyślnie) lub wyrażeniami regularnymi (jeśli podano opcję --regex).
+
+       -l, --local-file
+              Aktywuje  tryb  stron  "lokalnych".  Zamiast wyszukiwać strony w hierarchii systemowej, formatuje i wyświetla lokalne pliki podręcznika. Każdy argument będzie interpretowany jako poprawny plik źródłowy nroff. Nie będzie generowany preformatowany plik
+              "cat". Podanie "-" jako jednego z argumentów spowoduje, że będzie przetwarzane standardowe wejście (stdin). Jeśli nie podano tej opcji, a man nie znajdzie żądanej strony, to przed wyświetleniem komunikatu o błędzie zachowa się  tak,  jakby  ta  opcja
+              była podana i użyje podanego argumentu jako nazwy pliku do wyświetlenia.
+
+       -w, --where, --path, --location
+              Zamiast wyświetlać strony podręcznika ekranowego, wypisuje lokalizacje źródłowych plików nroff, które zostałyby sformatowane.
+
+       -W, --where-cat, --location-cat
+              Zamiast wyświetlać strony podręcznika ekranowego, wypisuje lokalizacje plików cat, które zostałyby wyświetlone. Jeśli podano jednocześnie -w i -W, wyświetla obie wartości rozdzielone spacją.
+
+       -c, --catman
+              Ta opcja nie jest przeznaczona dla ogółu i powinna być używana tylko przez program catman.
+
+       -R kodowanie_znaków, --recode=kodowanie_znaków
+              Zamiast  w normalny sposób wyświetlić stronę podręcznika, wypisze źródło strony przekształcone na podane kodowanie_znaków. Jeśli znane jest kodowanie znaków pliku źródłowego, to można użyć bezpośrednio polecenia manconv(1). Jednakże, opcja ta pozwala
+              przekształcić kilka stron podręcznika do jednego kodowania, bez dokładnego podawania kodowania źródeł każdej z nich, pod warunkiem że strony te są umieszczone w strukturze katalogów podobnej do hierarchii stron podręcznika.
+
+   Wyszukiwanie stron podręcznika ekranowego
+       -L ustawienia_językowe, --locale=ustawienia_językowe
+              man zazwyczaj określa bieżące ustawienia językowa przez wywołanie systemowej funkcji C setlocale(3), która określa je na podstawie różnych zmiennych środowiska, takich jak $LC_MESSAGES i $LANG. Aby tymczasowo  nadpisać  wartości  ustalone   przez  tę
+              funkcję,  można  użyć  tej  opcji  do  bezpośredniego  przekazania  ustawień_językowych  do programu man. Uwaga: będzie to miało wpływ tylko na wyszukiwanie stron podręcznika, komunikaty takie jak informacje o pomocy, zawsze będą wyświetlane w języku
+              określonym na początku działania.
+
+       -m system[,...], --systems=system[,...]
+              Jeśli ten system ma dostęp do hierarchii stron man innego systemu operacyjnego, to za pomocą tej opcji można uzyskać do nich dostęp. Aby wyszukać stronę podręcznika z systemu NewOS, należy podać -m NewOS.
+
+              Podany system może być kombinacją oddzielonych przecinkami nazw systemów operacyjnych. Aby włączyć hierarchię stron podręcznika macierzystego systemu operacyjnego, trzeba użyć man jako nazwy systemu w łańcuchu argumentów.  Niniejsza  opcja  nadpisuje
+              ewentualne użycie zmiennej środowiska $SYSTEM.
+
+       -M ścieżka, --manpath=ścieżka
+              Podaje alternatywną ścieżkę manpath. Domyślnie w celu znalezienia ścieżki przeszukiwań man używa kodu programu manpath. Opcja ta nadpisuje wartość zmiennej środowiskowej $MANPATH i powoduje, że opcja -m jest ignorowana.
+
+              Ścieżka  podana  jako ścieżka manpath musi być korzeniem hierarchii stron podręcznika, której struktura odpowiada strukturze sekcji opisanej w podręczniku man-db (w dokumencie "System stron podręcznika ekranowego", ang. "The manual page system"). Aby
+              zobaczyć strony podręcznika poza tą hierarchią, patrz opcja -l.
+
+       -S lista, -s lista, --sections=lista
+              Rozdzielona dwukropkami lub przecinkami lista określa kolejność przeszukiwania sekcji stron podręcznika. Opcja ta nadpisuje zmienną systemową $MANSECT. (Alternatywna pisownia w postaci -s jest dostarczona w celu zachowania kompatybilności z  Systemem
+              V).
+
+       -e pod-rozszerzenie, --extension=pod-rozszerzenie
+              Niektóre  systemu  zawierają  w  głównej sekcji hierarchii stron duże pakiety stron podręcznika, takich jak te, które towarzyszą pakietowi Tcl. Aby rozwiązać problem istnienia dwóch stron podręcznika o tej samej nazwie, takiej jak exit(3), strony Tcl
+              miały tradycyjnie przypisaną sekcję l. Jako że nie jest to zbyt szczęśliwe rozwiązanie, jest obecnie możliwe umieszczenie takich stron w poprawnej sekcji i przypisanie im określonego "rozszerzenia", w naszym przykładzie byłoby to exit(3tcl).  Podczas
+              normalnego  działania  man  wyświetli  exit(3)  przed exit(3tcl). Aby to zmienić i uniknąć konieczności podawania dokładnej sekcji, w której dana strona jest umieszczona, możliwe jest podanie programowi man pod-rozszerzenia, będącego łańcuchem znaków
+              określającym, do którego pakietu ma należeć strona podręcznika. Używając powyższego przykładu, przekazanie programowi man opcji -e tcl zawęzi wyszukiwanie do stron mających rozszerzenie *tcl.
+
+       -i, --ignore-case
+              Ignoruje wielkość liter podczas wyszukiwania stron podręcznika. Jest to zachowanie domyślne.
+
+       -I, --match-case
+              Wyszukuje strony podręcznika zwracając uwagę na wielkość liter.
+
+       --regex
+              Wyświetla wszystkie strony, których jakakolwiek część nazwy lub opisu pasuje - jako wyrażenie regularne - do każdego podanego argumentu strona, tak jak to robi apropos(1). Ponieważ podczas wyszukiwania za pomocą wyrażeń regularnych zazwyczaj  nie  ma
+              rozsądnego sposobu wydobycia"najlepszej" strony, opcja ta włącza -a.
+
+       --wildcard
+              Wyświetla  wszystkie  strony, których jakakolwiek część nazwy lub opisu pasuje - jako wyrażenie zawierające  znaki dopasowania w stylu powłoki - do każdego podanego argumentu strona, tak jak to robi apropos(1) --wildcard. Argument strona musi pasować
+              albo do całej nazwy lub całego opisu, albo do poszczególnych słów opisu. Ponieważ podczas wyszukiwania zazwyczaj nie ma rozsądnego sposobu wydobycia"najlepszej" strony, opcja ta włącza -a.
+
+       --names-only
+              Jeżeli użyto opcji --regex lub --wildcard, dopasowywane będą tylko nazwy stron, bez opisów stron, tak jak to robi whatis(1). W przeciwnym razie opcja ta nic nie robi.
+
+       -a, --all
+              Domyślnie man zakończy działanie po wyświetleniu najbardziej odpowiedniej strony podręcznika, jaką znajdzie. Użycie tej opcji spowoduje, że man pokaże wszystkie dostępne strony podręcznika, których nazwy odpowiadają kryteriom wyszukiwania.
+
+       -u, --update
+              Ta opcja powoduje, że man przeprowadzi sprawdzenie spójności swoich baz danych na poziomie i-węzłów, tak aby mieć pewność, że dokładnie odzwierciedlają system plików. Opcja ta ma efekt tylko wtedy,  gdy  man  jest  zainstalowany  z  ustawionym  bitem
+              set-user-id.
+
+       --no-subpages
+              Domyślnie,  man  próbuje  interpretować  pary  nazw stron podręcznika podane w linii poleceń jako odpowiedniki nazw pojedynczych stron podręcznika zawierających znaki myślnika lub podkreślenia. Wspiera to zwyczajowy wzorzec programów implementujących
+              podprogramy, pozwalając im na dostarczanie stron podręcznika dla każdego podprogramu przy użyciu składni podobnej do tej, która by była użyta do uruchomienia tego podprogramu. Przykład:
+
+                $ man -aw git diff
+                /usr/share/man/man1/git-diff.1.gz
+
+              Aby wyłączyć to zachowanie, proszę użyć opcji --no-subpages.
+
+                $ man -aw --no-subpages git diff
+                /usr/share/man/man1/git.1.gz
+                /usr/share/man/man3/Git.3pm.gz
+                /usr/share/man/man1/diff.1.gz
+
+   Kontrolowanie sformatowanego wyjścia
+       -P pager, --pager=pager
+              Określa, którego użyć programu do przeglądania tekstu (ang. pager). Domyślnie man używa programu pager -s. Ta opcja nadpisuje zmienną środowiska MANPAGER, która z kolei nadpisuje zmienną środowiska $PAGER. Nie jest używana w połączeniu z -f lub -k.
+
+              Wartością może być nazwa zwykłego polecenia lub polecenie z argumentami. W wartości można używać znaków cytowania powłoki (odwrotne ukośniki, pojedyncze lub podwójne cudzysłowy), jednakże nie można  łączyć  wielu  poleceń  w  potoki;  jeśli  jest  to
+              potrzebne należy użyć skryptu otaczającego potok. Skrypt ten powinien móc przyjmować plik do wyświetlenia albo jako argument linii poleceń, albo odczytać go ze standardowego wejścia.
+
+       -r linia_zachęty, --prompt=linia_zachęty
+              Jeżeli jako przeglądarka tekstu jest używana w miarę nowa wersja programu less, to man spróbuje ustawić jej łańcuch zachęty oraz parę sensownych opcji. Domyślny łańcuch zachęty wygląda tak
+
+               Strona podręcznika nazwa(sek) linia x
+
+              gdzie nazwa oznacza nazwę strony podręcznika, sek oznacza sekcję, w której znaleziono tę stronę, a x jest numerem bieżącego wiersza. Osiąga się to przez użycie zmiennej środowiska $LESS.
+
+              Podanie -r z łańcuchem znaków nadpisze tę wartość domyślną. Łańcuch znaków może zawierać tekst $MAN_PN, który zostanie zamieniony przez nazwę bieżącej strony podręcznika oraz jej sekcję otoczoną nawiasami "(" i ")". Łańcuch znaków równoważny wartości
+              domyślnej to:
+
+              \ Strona\ podręcznika\ \$MAN_PN\ ?ltlinia\ %lt?L/%L.:
+              bajt\ %bB?s/%s..?\ (KONIEC):?pB\ %pB\\%..
+              (naciśnij h, aby otrzymać pomoc, lub q, aby zakończyć)
+
+              Podział na trzy linie zastosowano tylko dla zwiększenia czytelności. Znaczenie można znaleźć w podręczniku less(1). Linia zachęty jest najpierw rozwijana przez powłokę. Wszystkie podwójne cudzysłowy, odwrotne apostrofy i  odwrotne  ukośniki  w  linii
+              zachęty muszą być poprzedzone znakiem odwrotnego ukośnika. Linia zachęty może kończyć się poprzedzonym przez odwrotny ukośnik znakiem $, po którym mogą następować kolejne opcje przekazywane do programu less. Domyślnie man  ustawia opcje -ix8.
+
+              Opisanej poniżej zmiennej środowiskowej $MANLESS można użyć do ustawienia domyślnego łańcucha zachęty, jeżeli nie podano go w parametrach linii poleceń.
+
+       -7, --ascii
+              Podczas  przeglądanie  strony  podręcznika  zawierającej  tylko czyste znaki ascii(7) w 7-bitowym terminalu lub emulatorze terminala, niektóre znaki mogą nie być wyświetlone poprawnie, jeżeli z programem używane jest urządzenie latin1(7) programu GNU
+              nroff. Ta opcja pozwala, aby strony zawierające tylko znaki ascii były wyświetlane w trybie ascii z urządzeniem latin1. Opcja ta nie zmieni kodowania żadnego tekstu latin1. Poniższa tabela pokazuje przeprowadzane zmiany kodowań: niektóre z nich  mogą
+              być wyświetlone poprawnie, tylko gdy używa się urządzenia latin1(7) GNU nroffa.
+
+
+              Opis                     Ósemkowy   latin1   ascii
+              ───────────────────────────────────────────────────
+              łącznik                    255        ‐        -
+              kula (kropka w środku)     267        ·        o
+              akcent ostry               264        ´        '
+              znak dzielenia             327        ×        x
+
+              Jeżeli  kolumna  latin1  wyświetla  się  poprawnie, Twój terminal może być już ustawiony na znaki latin1, więc podanie tej opcji nie jest potrzebne. Jeśli kolumny latin1 i ascii są identyczne, to czytasz tę stronę używając omawianej opcji lub man nie
+              sformatował tej strony za pomocą urządzenia latin1. Jeśli brakuje kolumny latin1 lub jest ona uszkodzona, to najprawdopodobniej trzeba używać omawianej opcji podczas przeglądania stron podręcznika ekranowego.
+
+              Ta opcja jest ignorowana, jeżeli podano również -t, -H, -T albo -Z i może być całkowicie nieprzydatna podczas używania wersji nroffa innej niż GNU.
+
+       -E kodowanie_znaków, --encoding=kodowanie_znaków
+              Generuje wyjście w innym niż domyślne kodowaniu znaków. W celu zachowania wstecznej kompatybilności kodowanie_znaków może być urządzeniem nroff, takim jak ascii, latin1 lub utf8 jak również prawdziwym kodowaniem znaków, takim jak UTF-8.
+
+       --no-hyphenation, --nh
+              Zazwyczaj nroff automatycznie dzieli wyrazy przy przenoszeniu, jeśli jest to konieczne, aby wyrównać linię, tak żeby nie zawierała za dużo spacji, i robi to nawet wtedy, gdy wyrazy te nie zawierają  znaków  łącznika.  Ta  opcja  wyłącza  automatyczne
+              dzielenie wyrazów, tak że słowa będą dzielone tylko, gdy zawierają łączniki.
+
+              Jeśli  piszesz  stronę  podręcznika  ekranowego,  to  aby  powstrzymać  nroff przed przenoszeniem wyrazów do nowej linii w nieodpowiednim miejscu, należy zapoznać się z dokumentacją programu nroff, zamiast używać tej opcji; na przykład można w słowie
+              umieścić sekwencję "\%" wskazującą miejsce, w którym słowo może być podzielone przy przenoszeniu, albo umieścić "\%" na początku słowa, co zabroni jego dzielenia.
+
+       --no-justification, --nj
+              Zazwyczaj nroff automatycznie wyrówna tekst w linii do obu marginesów. Opcja ta wyłącza takie wyrównywanie, zostawiając wyrównywanie tylko do lewego marginesu, co powoduje, że tekst z prawej strony jest "postrzępiony".
+
+              Podczas pisania strony podręcznika ekranowego, nie należy używać tej opcji do powstrzymywania nroffa od wyrównywania linii w akapicie do obu marginesów. Zamiast tego proszę zapoznać się z dokumentacją programu nroff.  Na  przykład  można  użyć  żądań
+              ".na", ".nf", ".fi", and ".ad", aby tymczasowo wyłączyć wyrównywanie linii i wypełnianie spacjami.
+
+       -p łańcuch_znaków, --preprocessor=łańcuch_znaków
+              Określa  sekwencję  preprocesorów  do uruchomienia przez uruchomieniem programu nroff lub troff/groff. Nie w każdym systemie będzie zainstalowany pełen zbiór preprocesorów. Niektóre preprocesory i litery je oznaczające to: eqn (e), grap (g), pic (p),
+              tbl (t), vgrind (v), refer (r). Ta opcja nadpisuje zmienną środowiska $MANROFFSEQ. zsoelim jest zawsze uruchamiany jako pierwszy preprocesor.
+
+       -t, --troff
+              Używa programu groff -mandoc, aby sformatować stronę podręcznika na standardowe wyjście. Opcja nie jest wymagana w połączeniu z  -H, -T lub -Z.
+
+       -T[urządzenie], --troff-device[=urządzenie]
+              Za pomocą tej opcji można zmienić wyjście programu groff (lub być może troff), tak aby było odpowiednie dla innego urządzenia niż domyślne. Włącza opcję -t. Przykłady (dostarczane przez groff-1.17) zawierają dvi, latin1, ps, utf8, X75 oraz X100.
+
+       -H[przeglądarka], --html[=przeglądarka]
+              Opcja ta spowoduje, że groff utworzy wyjście w formacie HTML i je wyświetli w przeglądarce stron www. Wybór przeglądarki dokonywany jest przy pomocy opcjonalnego argumentu przeglądarka. Jeśli go nie podano, to brana jest pod  uwagę  wartość  zmiennej
+              środowiska $BROWSER, a następnie domyślna przeglądarka ustawiona podczas kompilowania pakietu (zazwyczaj lynx). Opcja ta włącza również -t i będzie działać tylko z wersją GNU troffa.
+
+       -X[dpi], --gxditview[=dpi]
+              Opcja  ta  wyświetla  wyjście  groffa  w  okienku graficznym za pomocą programu gxditview Argumentem dpi (dots per inch) może być 75, 75-12, 100 lub 100-12, domyślnie jest 75; warianty -12 używają 12-punktowej czcionki jako bazowej. Opcja włącza -T z
+              urządzeniem X75, X75-12, X100 lub X100-12.
+
+       -Z, --ditroff
+              groff uruchomi program troff i użyje odpowiedniego postprocesora do utworzenia wyjścia odpowiedniego dla wybranego urządzenia. Gdy groff -mandoc jest groffem, to ta opcja jest przekazywana do groffa  i  wstrzyma  użycie  postprocesora.  Automatycznie
+              włącza opcję -t.
+
+   Otrzymywanie pomocy
+       -?, --help
+              Wyświetla komunikat pomocy i kończy pracę.
+
+       --usage
+              Wyświetla krótki opis użycia programu i kończy pracę.
+
+       -V, --version
+              Wyświetla informację o wersji.
+
+KOD ZAKOŃCZENIA
+       0      Program zakończony bez żadnych błędów.
+
+       1      Błąd użycia, składni lub pliku konfiguracyjnego.
+
+       2      Błąd działania.
+
+       3      Proces potomny zwrócił niezerowy kod zakończenia.
+
+       16     Co najmniej jedna z stron/plików/słów kluczowych nie istnieje lub nie zostało dopasowane.
+
+ŚRODOWISKO
+       MANPATH
+              Jeżeli ustawiona jest $MANPATH, to jej wartość jest używana jako ścieżka przeszukiwań hierarchii stron man.
+
+       MANROFFOPT
+              Zawartość zmiennej $MANROFFOPT jest dodawana do linii poleceń za każdym razem, gdy  man uruchamia program formatujący (nroff, troff lub groff).
+
+       MANROFFSEQ
+              Jeżeli ustawiono $MANROFFSEQ, to jej wartość jest używana do określenia zbioru preprocesorów przez które jest przepuszczana strona podręcznika. Domyślna lista preprocesorów zależy od systemu.
+
+       MANSECT
+              Jeżeli  ustawiona jest $MANSECT, to jej wartość jest listą oddzielonych dwukropkami sekcji i służy do określania, które sekcje podręcznika man i w jakiej kolejności będą przeszukiwane. Domyślną wartością jest "1 n l 8 3 2 3posix 3pm 3perl 5 4 9 6 7",
+              chyba że zostanie to nadpisane w polu SECTION pliku /etc/manpath.config.
+
+       MANPAGER, PAGER
+              Jeśli ustawiono zmienną $MANPAGER lub $PAGER ($MANPAGER ma wyższy priorytet), to jej wartość jest używana jako nazwa programu, w którym będzie wyświetlona strona podręcznika ekranowego. Domyślnie używany jest program pager -s.
+
+              Wartością może być nazwa zwykłego polecenia lub polecenie z argumentami. W wartości można używać znaków cytowania powłoki (odwrotne ukośniki, pojedyncze lub podwójne cudzysłowy), jednakże nie można  łączyć  wielu  poleceń  w  potoki;  jeśli  jest  to
+              potrzebne należy użyć skryptu otaczającego potok. Skrypt ten powinien móc przyjmować plik do wyświetlenia albo jako argument linii poleceń, albo odczytać go ze standardowego wejścia.
+
+       MANLESS
+              Jeśli  $MANLESS  jest  ustawiona,  to  jej  wartość  zostanie  użyta  jako  domyślna linia zachęty programu less, dokładnie tak jakby przekazano ją w opcji -r (i każde wystąpienie tekstu $MAN_PN zostanie rozwinięte w taki sam sposób). Na przykład aby
+              bezwarunkowo ustawić linię zachęty na “moja linia zachęty”, należy ustawić $MANLESS na ‘-Psmoja linia zachęty’. Użycie opcji -r nadpisuje tę zmienną środowiska.
+
+       BROWSER
+              Jeżeli jest ustawiona zmienna $BROWSER, to jej wartością jest rozdzielona dwukropkami lista poleceń, które man będzie - w kolejności - próbował uruchomić, aby wyświetlić wyjście man --html w przeglądarce www. W każdym poleceniu  %s  jest  zastępowane
+              nazwą pliku zawierającego wyjście HTML programu groff, %% jest zastępowane znakiem procentu (%), a %c - dwukropkiem (:).
+
+       SYSTEM Jeżeli ustawiona jest zmienna $SYSTEM, to ma to taki sam skutek, jak przekazanie jej wartości jako argumentu opcji -m.
+
+       MANOPT Jeżeli  ustawiono  $MANOPT,  to  wartość tej zmiennej, która powinna być w formacie podobnym do formatu linii opcji poleceń programu man, będzie przetwarzana przed opcjami linii poleceń. Ponieważ wszystkie pozostałe zmienne środowiska specyficzne dla
+              programu man mogą być wyrażone jako opcje linii poleceń i jako takie mogą być podane w zmiennej $MANOPT, należy oczekiwać, że zostaną one uznane za przestarzałe. Uwaga: wszystkie spacje, które mają być  zinterpretowane  jako  część  argumentu  opcji,
+              muszą zostać poprzedzone znakiem odwrotnego ukośnika.
+
+       MANWIDTH
+              Jeżeli  ustawiono  zmienną  $MANWIDTH, to jej wartość jest używana do określenia długości wiersza, dla której będą formatowane strony podręcznika. Jeżeli nie jest ustawiona, to strony podręcznika będą formatowane dla długości wiersza odpowiedniej dla
+              bieżącego terminalu (używając ioctl(2), jeśli jest dostępne, lub wartości zmiennej $COLUMNS, lub jeśli żadne z nich nie jest dostępne, ustawiając domyślną wartość 80 znaków). Preformatowane strony "cat" będą zachowywane tylko wtedy, gdy jest  używane
+              domyślne formatowanie, to jest gdy długość wiersza terminala zawiera się między 66 a 80 znakami.
+
+       MAN_KEEP_FORMATTING
+              Zazwyczaj,  jeżeli  wyjście  nie  jest  przekazywane  do  terminala  (tylko  np.  do  pliku  lub  potoku),  to  kontrolne  znaki  formatujące  są  usuwane, aby ułatwić czytanie pliku wynikowego bez użycia żadnych dodatkowych narzędzi. Jednakże jeżeli
+              MAN_KEEP_FORMATTING ma niepustą wartość, znaki te są zachowywane. Może być to użyteczne dla programów, które wewnętrznie wywołują man i potrafią zinterpretować znaki kontrolne.
+
+       MAN_KEEP_STDERR
+              Zazwyczaj, jeśli wyjście jest skierowane na terminal (zazwyczaj do programu do stronicowania), to ignorowane są wszystkie komunikaty błędów generowane przez programy używane to sformatowania strony podręcznika, tak aby nie zakłócić  wyjścia  programu
+              do  stronicowania.  Programy,  takie  jak  groff często tworzą komunikaty o relatywnie mało istotnych błędach typograficznych (dotyczących na przykład złego wyrównania) - wyświetlanie ich razem ze stroną podręcznika byłoby szpecące i mylące. Jednakżę
+              niektórzy użytkownicy chcieliby zobaczyć te błędy, więc jeżeli ustawi się zmienną $MAN_KEEP_STDERR na dowolną niepustą wartość, to wyjście błędów będzie normalnie wyświetlane.
+
+       LANG, LC_MESSAGES
+              W zależności od systemu i implementacji bieżące ustawienia językowe będą pobierane z  jednej lub obu spośród zmiennych $LANG i $LC_MESSAGES. man wyświetli swoje komunikaty w tym języku (jeśli są dostępne). Szczegóły można znaleźć w setlocale(3).
+
+PLIKI
+       /etc/manpath.config
+              Plik konfiguracyjny man-db.
+
+       /usr/share/man
+              Globalna hierarchia stron podręcznika ekranowego.
+
+       /usr/share/man/index.(bt|db|dir|pag)
+              Tradycyjny globalny indeks bazy danych.
+
+       /var/cache/man/index.(bt|db|dir|pag)
+              Zgodny z FHS globalny indeks bazy danych.
+
+ZOBACZ TAKŻE
+       apropos(1), groff(1), less(1), manpath(1), nroff(1), troff(1), whatis(1), zsoelim(1), setlocale(3), manpath(5), ascii(7), latin1(7), man(7), catman(8), mandb(8), podręcznik pakietu man-db, FSSTND
+
+HISTORIA
+       1990, 1991 - Program napisany przez Johna W. Eatona (jwe@che.utexas.edu).
+
+       23 grudnia 1992: Rik Faith (faith@cs.unc.edu) zaaplikował poprawki błędów nadesłane przez Willema Kasdorpa (wkasdo@nikhefk.nikef.nl).
+
+       30 kwietnia 1994 - 23 lutego 2000: Wilf. (G.Wilford@ee.surrey.ac.uk) z pomocą paru osób rozwijał ten pakiet i nim zarządzał.
+
+       30 października 1996 - 30 marca 2001: Fabrizio Polacco <fpolacco@debian.org>rozwijał i udoskonalał ten pakiet dla projektu Debiana z pomocą całej społeczności.
+
+       31 marca 2001 - obecnie: Colin Watson <cjwatson@debian.org> rozwija man-db i nim zarządza.
+
+TŁUMACZENIE
+       Wojciech Kotwica w 1999 roku przetłumaczył część stron podręcznika pakietu man-db i udostępnił je w ramach Projektu Tłumaczenia Manuali.
+       Robert Luberda tłumaczenie zaktualizował i uzupełnił w roku 2008.
+
+
+
+2.6.7.1                                                                                                                        2014-04-10                                                                                                                         MAN(1)
