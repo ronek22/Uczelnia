@@ -199,12 +199,42 @@ Boolean  form5 (drzewo* drz) {
 }
 
 /***************************************************/
+//tp - typ(zz(zmienna),ss(stala),dd(spojnik))
+//sp - spojnik(nie=0, ii=1, lub=2, jesli=3, wttw=4)
 
 char  wylicz(drzewo drz, char tab[26]) {
-
-  for(int i = 0;i<26;i++){
-    printf("%c\n", tab[i]);
+  if(drz->tp==zz)
+  {
+    return tab[drz->zm-97];
   }
+  else if(drz->tp==ss)
+  {
+    return drz->st;
+  }
+  else if(drz->tp==dd && drz->sp==nie)
+  {
+    if(wylicz(drz->prawy,tab)=='0') return '1';
+    else return '0';
+  }
+  else if(drz->tp==dd && drz->sp==ii)
+  {
+    if((wylicz(drz->lewy,tab)=='1') && (wylicz(drz->prawy,tab)=='1')) return '1';
+    else return '0';
+  }
+  else if(drz->tp==dd && drz->sp==lub){
+    if((wylicz(drz->lewy,tab)=='0') && (wylicz(drz->prawy,tab)=='0')) return '0';
+    else return '1';
+  }
+  else if(drz->tp==dd && drz->sp==jesli){
+    if((wylicz(drz->lewy,tab)=='1') && (wylicz(drz->prawy,tab)=='0')) return '0';
+    else return '1';
+  }
+  else if(drz->tp==dd && drz->sp==wttw){
+    if(((wylicz(drz->lewy,tab)=='0') && (wylicz(drz->prawy,tab)=='0')) || ((wylicz(drz->lewy,tab)=='1') && (wylicz(drz->prawy,tab)=='1'))) return '1';
+    else return '0';
+  }
+  else return '2';
+
   return '\n';
 }
 
