@@ -37,7 +37,7 @@ lista reszta(lista lis) {
   if(lis==NULL){
     return 0;
   } else{
-    lis=lis->dalej;
+    return lis->dalej;
   }
   // zwraca liste  lis  z usunietym pierwszym slowem
   // jesli jest pusta, to dzialanie nieokreslone
