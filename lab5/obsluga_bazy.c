@@ -40,7 +40,7 @@ void  utworz_spis(void) {
 void  sortuj_spis(void) {
   for(int i=0;i<IL_OSOB-1;i++){
     for(int j=0;j<IL_OSOB-1-i;j++){
-	   if(strcmp(spis[j].nazwisko,spis[j+1].nazwisko)==1)
+	   if(strcmp(spis[j].nazwisko,spis[j+1].nazwisko)>0)
 	        swap(spis, j,j+1);
 	}
 }
@@ -59,7 +59,7 @@ int  znajdz_nazwisko (
 	strcpy(im,spis[i].imie);
         return 1;
       }
-      
+
     }
 	return 0;
   /* do danego nazwiska  na  znajduje w spisie
@@ -100,7 +100,6 @@ int main () {
 
   utworz_spis();
   sortuj_spis();
-
 
   do {
     printf(
