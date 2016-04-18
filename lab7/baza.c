@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX_DL_IM 11
 #define MAX_DL_NA 17
@@ -74,13 +75,11 @@ void pisanie(char *arg, int ile){
         fclose(zapis);
 }
 
-
-
+/*-------------------------------------*/
 int main (int arg_num, char* arg[]) {
 
         if (arg_num == 3) {
                 int ile = czytanie(arg[1]);
-                printf("ILE: %d\n",ile);
                 if (ile > 0) {
                         utworz_spis(arg[1],ile);
                         sortowanie(ile);
