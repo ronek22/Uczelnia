@@ -364,27 +364,16 @@ SELECT * FROM dodaj_pilkarza('F.C. Barcelona','Skrzydłowy Napastnik','Brazylia'
 
 --5a) Tworzymy procedurę 2
 --Procedura wyświetla wszystkich pilkarzy z danego kraju razem z ich klubami
-CREATE FUNCTION kraj_pilkarze(p_kraj varchar(30))
-RETURNS VOID AS $$
+CREATE FUNCTION kraj_pilkarze(p_kraj varchar(30)) RETURNS VOID AS $$
+DECLARE
+  _r RECORD;
 BEGIN
-DECLARE p_idkraj INT;
-DECLARE p_nazwa_zespolu varchar(30);
-DECLARE p_imie varchar(20), p_nazwisko varchar(30), p_zespol int, d_kraj int;
-SELECT INTO p_idkraj id_kraj FROM kraj WHERE p_kraj=nazwa;
-DECLARE kursor_pilk CURSOR FOR
-SELECT imie,nazwisko, id_zespol, id_kraj FROM pilkarz;
-OPEN kursor_pilk;
-FETCH NEXT FROM kursor_pilk INTO p_imie, p_nazwisko,p_zespol, d_kraj;
-WHILE (FOUND) LOOP
-	IF d_kraj=p_idkraj THEN
-			SELECT INTO p_nazwa_zespolu nazwa FROM zespol WHERE @zespol=id_zespol;
-			RAISE NOTICE '% %, %',p_imie,p_nazwisko,p_nazwa_zespolu;
-			FETCH NEXT FROM kursor_pilk INTO p_imie, p_nazwisko,p_zespol,d_kraj;
-	ELSE
-			FETCH NEXT FROM kursor_pilk INTO p_imie, p_nazwisko,p_zespol,d_kraj;
-	END IF;
-END LOOP;
-CLOSE kursor_pilk;
+  FOR _r IN
+    SELECT imie, nazwisko, id_zespol, id_kraj, (SELECT nazwa FROM zespol WHERE id_zespol = p.id_zespol) AS nazwa
+    FROM pilkarz p WHERE id_kraj = (SELECT id_kraj FROM kraj WHERE nazwa = $1)
+  LOOP
+    RAISE NOTICE '% %, %', _r.imie, _r.nazwisko, _r.nazwa;
+  END LOOP;
 END;
 $$ LANGUAGE PLPGSQL;
 
