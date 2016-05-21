@@ -407,4 +407,31 @@ CREATE TRIGGER trig_1
 --6b) Sprawdzenie, że wyzwalacz 1 działa
 INSERT INTO sedziowie_w_meczu VALUES (4,1);
 UPDATE sedziowie_w_meczu SET id_mecz=1 WHERE id_sedzia=2 AND id_mecz=2;
+
+--7a) Tworzymy wyzwalacz 2
+--Ograniczenie do dwoch zespolow w jednym meczu
+CREATE OR REPLACE FUNCTION ogr_mecz_zesp() RETURNS TRIGGER AS $$
+BEGIN
+	IF EXISTS(
+	    SELECT 1
+	    FROM zespoly_w_meczu
+	    WHERE id_mecz=NEW.id_mecz
+	    GROUP BY zespoly_w_meczu.id_mecz
+	    HAVING COUNT(*) > 2
+	) THEN
+	RAISE 'W meczu nie może brać udziału więcej niż dwa zespoly';
+	ELSE
+	RETURN NEW;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER trig_2
+	AFTER INSERT OR UPDATE
+	ON zespoly_w_meczu
+	FOR EACH ROW
+	EXECUTE PROCEDURE ogr_mecz_zesp();
+
+--7b) Sprawdzenie, że wyzwalacz 2 działa
+INSERT INTO zespoly_w_meczu VALUES (4,1);
 ```
