@@ -382,22 +382,29 @@ EXECUTE kraj_pilkarze 'Polska';
 
 --6a) Tworzymy wyzwalacz 1
 --Ograniczenie do trzech sedziow w jednym meczu
-CREATE TRIGGER ogr_mecz_sedzia AFTER INSERT OR UPDATE
-ON sedziowie_w_meczu
-IF (
-    SELECT exists
-    FROM inserted
-    JOIN dbo.sedziowie_w_meczu ON
-        sedziowie_w_meczu.id_mecz = NEW.id_mecz
-    GROUP BY sedziowie_w_meczu.id_mecz
-    HAVING COUNT(*) > 3;
-    )
-THEN
-    RAISE('Meczu nie może sędziować więcej niż 3 sędziów', 1, 2);
-	ROLLBACK;
-END IF;
+CREATE OR REPLACE FUNCTION ogr_mecz_sedzia() RETURNS TRIGGER AS $$
+BEGIN
+	IF EXISTS(
+	    SELECT 1
+	    FROM sedziowie_w_meczu
+	    WHERE id_mecz = NEW.id_mecz
+	    GROUP BY sedziowie_w_meczu.id_mecz
+	    HAVING COUNT(*) > 3
+	) THEN
+	RAISE 'Meczu nie moze sedziowac wiecej niz 3 sedziów';
+	ELSE
+	RETURN NEW;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER trig_1
+	AFTER INSERT OR UPDATE
+	ON sedziowie_w_meczu
+	FOR EACH ROW
+	EXECUTE PROCEDURE ogr_mecz_sedzia();
 
 --6b) Sprawdzenie, że wyzwalacz 1 działa
 INSERT INTO sedziowie_w_meczu VALUES (4,1);
-UPDATE sedziowie_w_meczu SET id_mecz=1 WHERE id_sedzia=2 AND id_mecz=2
+UPDATE sedziowie_w_meczu SET id_mecz=1 WHERE id_sedzia=2 AND id_mecz=2;
 ```
