@@ -461,4 +461,18 @@ CREATE TRIGGER trig_3
     FOR EACH ROW
     EXECUTE PROCEDURE ogr_sezon_mecz();
 
+--9a) Tworzymy wyzwalacz 4
+--Wyzwalacz blokuje zmiane zespolu przez pilkarzy, gdy nie ma okna transferowego
+CREATE OR REPLACE FUNCTION ogr_upd_pikarz() RETURNS trigger AS $$
+BEGIN
+	NEW.id_zespol = OLD.id_zespol;
+	RAISE NOTICE 'Nie mozna zmieniac zespolu, zmiana nie zostala wprowadzona';
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+--9b) Sprawdzenie, że wyzwalacz 4 działa
+CREATE TRIGGER trig_4 BEFORE UPDATE ON pilkarz
+FOR EACH ROW 
+EXECUTE PROCEDURE ogr_upd_pikarz();
 ```
