@@ -434,4 +434,31 @@ CREATE TRIGGER trig_2
 
 --7b) Sprawdzenie, że wyzwalacz 2 działa
 INSERT INTO zespoly_w_meczu VALUES (4,1);
+
+--8a) Tworzymy wyzwalacz 3
+--W meczu nie moga brac udzialu zespoly z innych sezonow
+CREATE OR REPLACE FUNCTION ogr_sezon_mecz() RETURNS TRIGGER AS $$
+DECLARE
+	p_id_mecz INT;
+	p_id_zespol INT;
+	sezon_dod_zespolu INT;
+	sezon_mecz INT;
+BEGIN
+	SELECT id_zespol, id_mecz INTO p_id_zespol,p_id_mecz FROM zespoly_w_meczu WHERE (id_mecz=NEW.id_mecz AND id_zespol=NEW.id_zespol);
+	SELECT id_sezon INTO sezon_mecz FROM mecz WHERE p_id_mecz=id_mecz;
+	SELECT id_sezon INTO sezon_dod_zespolu FROM zespol_w_sezonie WHERE p_id_zespol=id_zespol;
+	IF (sezon_mecz != sezon_dod_zespolu) THEN
+	RAISE 'Zespol nie gra w tej lidze i tym sezonie, nie mozna dodac!';
+	ELSE
+	RETURN NEW;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER trig_3
+    AFTER INSERT OR UPDATE
+    ON zespoly_w_meczu
+    FOR EACH ROW
+    EXECUTE PROCEDURE ogr_sezon_mecz();
+
 ```
