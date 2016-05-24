@@ -461,6 +461,12 @@ CREATE TRIGGER trig_3
     FOR EACH ROW
     EXECUTE PROCEDURE ogr_sezon_mecz();
 
+--8b) Sprawdzenie, że wyzwalacz 3 działa
+INSERT INTO mecz (id_mecz,id_stadion,id_sezon,data_meczu) VALUES
+(6,3,3,'10-10-2015');
+INSERT INTO zespoly_w_meczu (id_zespol,id_mecz) VALUES (5,6);
+INSERT INTO zespoly_w_meczu (id_zespol,id_mecz) VALUES (3,6);
+
 --9a) Tworzymy wyzwalacz 4
 --Wyzwalacz blokuje zmiane zespolu przez pilkarzy, gdy nie ma okna transferowego
 CREATE OR REPLACE FUNCTION ogr_upd_pikarz() RETURNS trigger AS $$
