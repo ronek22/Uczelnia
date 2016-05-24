@@ -475,4 +475,19 @@ $$ LANGUAGE PLPGSQL;
 CREATE TRIGGER trig_4 BEFORE UPDATE ON pilkarz
 FOR EACH ROW 
 EXECUTE PROCEDURE ogr_upd_pikarz();
+
+--10) Tworzymy tabelę przestawną
+--Widok pomocniczy
+CREATE VIEW pivot_t
+AS
+SELECT date_part('year',m.data_meczu) AS rok , m.id_mecz,s.nazwa 
+FROM mecz m JOIN stadion s ON m.id_stadion=s.id_stadion;
+
+--Tabela przestna bez użycia crosstab'a
+SELECT nazwa,
+SUM(CASE WHEN rok='2015' THEN 1 ELSE 0 END) AS rok2015,
+SUM(CASE WHEN rok='2016' THEN 1 ELSE 0 END) AS rok2016
+FROM pivot_t
+GROUP BY nazwa
+ORDER BY nazwa;
 ```
