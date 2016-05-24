@@ -8,7 +8,6 @@ typedef struct {
   char kolor[16];
 } przedmiot;
 
-przedmiot pd[15];
 
   char miejsce[20];
   char nazwa_wlasna[40];
@@ -27,6 +26,7 @@ void  czytanie(char *arg) {
         fscanf(baza, "%s", trunek);
         fscanf(baza, "%d", &odleglosc);
         fscanf(baza, "%d", &ile_przed);
+        przedmiot pd[ile_przed];
 
         for (i=0; i<ile_przed; i++) {
                 fscanf(baza, "%s", pd[i].nazwa);
@@ -42,11 +42,6 @@ int main (int arg_num, char* arg[]) {
   int i;
   if (arg_num == 2) {
     czytanie(arg[1]);// wywołanie funkcji czytanie
-    printf("\nTyp miejsca: %s\nNazwa: %s\nTrunek: %s\nOdleglosc: %d\nIlosc przedmiotow: %d\n", miejsce, nazwa_wlasna, trunek, odleglosc, ile_przed);
-    printf("%10s %10s %10s\n-------------------------------------------\n", "Nazwa","Cena","Kolor");
-    for(i=0;i<10;i++){
-      printf("%10s %10f %10s\n", pd[i].nazwa,pd[i].cena,pd[i].kolor);
-    }
   }
   else
   printf("\n Poprawne wywolanie: './wczytaj nazwa_pliku'\n\n");
