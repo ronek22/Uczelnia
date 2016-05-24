@@ -317,7 +317,7 @@ FROM pilkarz p JOIN statystyki_pilkarza sp
          ON zs.id_zespol=z.id_zespol JOIN sezon s
             ON s.id_sezon=zs.id_sezon
 GROUP BY p.imie,p.nazwisko,z.nazwa,s.nazwa_sezonu
-HAVING SUM(sp.ilosc_bramek+sp.ilosc_asyst)>0
+HAVING SUM(sp.ilosc_bramek+sp.ilosc_asyst)>0;
 
 --1b) Sprawdzenie, że widok działa
 SELECT * FROM punktacja_kanadyjska ORDER BY punktacja_kanadyjska DESC, bramki DESC;
