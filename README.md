@@ -378,7 +378,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 
 --5b) Sprawdzenie, że procedura 2 działa
-EXECUTE kraj_pilkarze 'Polska';
+SELECT * FROM kraj_pilkarze('Polska');
 
 --6a) Tworzymy wyzwalacz 1
 --Ograniczenie do trzech sedziow w jednym meczu
