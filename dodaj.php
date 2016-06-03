@@ -43,13 +43,24 @@ else
           <button name="submit" type="submit" id="contact-submit">Wyślij</button>
         </fieldset>
       </form>
+
 			<?php
+			$bool_img = 0;
+
+
 			if(isset($_FILES['image'])){
+				//Sprawdzenie czy dodawac zdjecie w htmlu
+				if(file_exists($_FILES['image']['tmp_name']) || is_uploaded_file($_FILES['image']['tmp_name'])) {
+						$bool_img = 1;
+				}
+
 				$file_name = $_FILES['image']['name'];
 				$file_tmp = $_FILES['image']['tmp_name'];
 				$img_path = "images/".$file_name;
 				move_uploaded_file($file_tmp,$img_path);
 			}
+
+
 
 			if(isset($_POST['tytul']) && isset($_POST['tresc'])){
 				$tytul = $_POST['tytul'];
@@ -59,7 +70,12 @@ else
 					$plik = 'wpisy/wpisy.txt';
 					$tresc = str_replace("\n", '<br/>', $tresc);
 
-					$zapis = $tytul .'||'. $img_path .'||'. $tresc;
+					if($bool_img==1){
+						$zapis = $tytul .'||'. $img_path .'||'. $tresc;
+					}else{
+						$zapis = $tytul .'||empty||'. $tresc;
+					}
+
 					$noweDane = $zapis. "\n"; //tworzenie nowych danych
 					// Wczytanie starych danych
 

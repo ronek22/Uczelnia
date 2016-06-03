@@ -13,17 +13,30 @@ else
 				$wpisy = 'wpisy/wpisy.txt';
 				$array = file($wpisy);
 				$ile = count($array);
+				$ktory = 0;
 
 				if($ile == 0){
 					echo '<h2>Brak Newsów!</h2>';
 				} else {
 					foreach ($array as $wartosc) {
 						$dane = explode('||', $wartosc);
+						$ktory++;
 						?>
 
 			<h2><?php echo $dane[0] ?></h2>
+			<?php
+				if($dane[1]!="empty"){
+			?>
 			<img src=<?php echo $dane[1] ?> alt="błąd">
+			<?php } ?>
+
+			<?php if(strlen($dane[2])>200){
+				$dane[2] = substr($dane[2],0,200).'...';
+			?>
 			<p><?php echo $dane[2]?></p>
+			<a href=<?php echo 'wpis.php?news='.$ktory; ?> >czytaj wiecej...</a>
+			<?php } else {?>
+			<p><?php echo $dane[2]?></p><?php } ?>
 			<?php
 					}
 				}
