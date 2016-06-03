@@ -1,0 +1,3 @@
+Trzeci wpis!||images/bear-road-denali_93621_990x742.jpg||Wysyłanie pliku na sigmie!
+Drugi wpis!||images/046-iphone6plus.png||Sprawdzenie, czy dodawanie kilku wpisów działa!
+Pierwszy wpis!||images/photo-1451906278231-17b8ff0a8880.jpg||To mój pierwszy wpis, testujący system dodawania postów. Do zrobienia jeszcze skrócona wersja wpisu na stronie głównej i link do pełnej wersji.
