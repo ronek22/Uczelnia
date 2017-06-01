@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int kalkulator(int a, int b){
+	printf("Suma = %d \n",a+b);
+	printf("Roznica = %d \n",a-b);
+	printf("Iloczyn = %d \n",a*b);
+	printf("Iloraz = %d \n",a/b);
+	
+}
+
+int main(){
+
+	int x, y;
+
+	printf("Podaj dwie liczby: \n");
+	scanf("%d",&x); 
+	scanf("%d",&y);
+
+	kalkulator(x,y); 
+
+	return 0;
+}

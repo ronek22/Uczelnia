@@ -1,0 +1,12 @@
+
+1. Osoba: 
+Imie: Jan
+Nazwisko: Kowalski
+Wiek: 9
+Srednia: 4.76
+
+2. Osoba: 
+Imie: Marek
+Nazwisko: Lewandowski
+Wiek: 15
+Srednia: 3.53
