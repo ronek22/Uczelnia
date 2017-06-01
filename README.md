@@ -1,1 +1,0 @@
-# [PHP]Simple News System
