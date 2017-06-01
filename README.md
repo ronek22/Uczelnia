@@ -1,3 +1,0 @@
-
-# Uczelnia
-Ug Code
