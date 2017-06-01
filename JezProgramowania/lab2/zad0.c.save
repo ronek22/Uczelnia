@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(){
+
+	printf("%i",5&3);
+	printf("%i",5
+3);
+	printf("%i",5&3);
+	printf("%i",5&3);
+	printf("%i",5&3);
+
+
+	return 0;
+}
