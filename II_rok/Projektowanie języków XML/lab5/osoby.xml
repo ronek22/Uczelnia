@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<osoby>
+  <osoba plec="M">
+    <imie>Jan</imie>
+    <nazwisko>Nowak</nazwisko>
+    <adres>
+      <miejscowosc>Gdańsk</miejscowosc>
+      <ulica>Akacjowa</ulica>
+      <nr-domu>14</nr-domu>
+    </adres>
+    <telefony>
+        <tel-stac>8738291</tel-stac>
+        <tel-kom>606837281</tel-kom>
+    </telefony>
+  </osoba>
+  <osoba plec="K">
+    <imie>Marta</imie>
+    <nazwisko>Nowak</nazwisko>
+    <adres>
+      <miejscowosc>Gdańsk</miejscowosc>
+      <ulica>Akacjowa</ulica>
+      <nr-domu>14</nr-domu>
+    </adres>
+    <telefony>
+        <tel-stac>5345345</tel-stac>
+        <tel-kom>595291019</tel-kom>
+    </telefony>
+  </osoba>
+</osoby>

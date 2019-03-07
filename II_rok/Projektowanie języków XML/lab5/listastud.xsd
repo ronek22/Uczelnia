@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:simpleType name="stringtype">
+  <xs:restriction base="xs:string"/>
+</xs:simpleType>
+
+<xs:simpleType name="dectype">
+  <xs:restriction base="xs:decimal"/>
+</xs:simpleType>
+
+<xs:simpleType name="datetype">
+  <xs:restriction base="xs:date" />
+</xs:simpleType>
+
+<xs:simpleType name="inttype">
+  <xs:restriction base="xs:integer" />
+</xs:simpleType>
+
+<xs:simpleType name="src">
+  <xs:restriction base="xs:anyURI" />
+</xs:simpleType>
+
+
+<xs:complexType name="studenttype">
+  <xs:sequence>
+    <xs:element name="nazwisko" type="stringtype"/>
+    <xs:element name="imie" type="stringtype"/>
+    <xs:element name="nrindeksu" type="inttype"/>
+    <xs:element name="dataurodzenia" type="datetype"/>
+    <xs:element name="sredniaocen" type="dectype"/>
+    <xs:element name="stronadomowa" type="src"/>
+  </xs:sequence>
+</xs:complexType>
+
+
+<xs:complexType name="liststudtype">
+  <xs:sequence>
+    <xs:element name="student" type="studenttype" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="listastud" type="listastudtype"/>
+</xs:schema>

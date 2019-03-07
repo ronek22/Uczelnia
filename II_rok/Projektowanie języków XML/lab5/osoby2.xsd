@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="imie" type="xs:string"/>
+<xs:element name="nazwisko" type="xs:string"/>
+<xs:element name="miejscowosc" type="xs:string"/>
+<xs:element name="ulica" type="xs:string"/>
+<xs:element name="nr-domu" type="xs:integer"/>
+<xs:element name="tel-stac" type="xs:integer"/>
+<xs:element name="tel-kom" type="xs:integer"/>
+
+<xs:attribute name="plec" type="xs:string"/>
+
+<xs:element name="osoby" >
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="osoba" maxOccurs="unbounded"/>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="osoba">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="imie"/>
+      <xs:element ref="nazwisko"/>
+      <xs:element ref="adres"/>
+      <xs:element ref="telefony"/>
+    </xs:sequence>
+    <xs:attribute ref="plec" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+
+<xs:element name="adres">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="miejscowosc"/>
+      <xs:element ref="ulica"/>
+      <xs:element ref="nr-domu"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="telefony">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="tel-stac"/>
+      <xs:element ref="tel-kom"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

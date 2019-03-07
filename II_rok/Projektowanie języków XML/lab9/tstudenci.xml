@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<studenci>
+	<student plec="k">
+		<imie>Anna</imie>
+		<nazwisko>Nowak</nazwisko>
+		<grupa>1</grupa>
+	</student>
+	<student plec="m">
+		<imie>Jan</imie>
+		<nazwisko>Kowalski</nazwisko>
+		<grupa>1</grupa>
+	</student>
+	<student plec="m">
+		<imie>Marcin</imie>
+		<nazwisko>Malinowski</nazwisko>
+		<grupa>2</grupa>
+	</student>
+	<student plec="k">
+		<imie>Marta</imie>
+		<nazwisko>Kosiak</nazwisko>
+		<grupa>2</grupa>
+	</student>
+</studenci>

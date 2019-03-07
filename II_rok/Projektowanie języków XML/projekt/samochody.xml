@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<samochody>
+	<samochod>
+		<nr-rej>CBR5310</nr-rej>
+		<marka>Opel</marka>
+		<model>Astra</model>
+		<nadwozie>Kombi</nadwozie>
+		<rocznik>1995</rocznik>
+		<kolor>Zielony</kolor>
+		<ilosc-miejsc>5</ilosc-miejsc>
+		<moc>100</moc>
+	</samochod>
+	<samochod>
+		<nr-rej>GDA2151</nr-rej>
+		<marka>Mazda</marka>
+		<model>MX-5</model>
+		<nadwozie>Roadster</nadwozie>
+		<rocznik>2014</rocznik>
+		<kolor>Czerwony</kolor>
+		<ilosc-miejsc>2</ilosc-miejsc>
+		<moc>165</moc>
+	</samochod>
+	<samochod>
+		<nr-rej>GD22102</nr-rej>
+		<marka>Volkswagen</marka>
+		<model>Golf</model>
+		<nadwozie>Hatchback</nadwozie>
+		<rocznik>2012</rocznik>
+		<kolor>Czarny</kolor>
+		<ilosc-miejsc>5</ilosc-miejsc>
+		<moc>230</moc>
+	</samochod>
+</samochody>

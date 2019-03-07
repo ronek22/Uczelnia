@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="osoby">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="osoba" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="imie" type="xsd:string"/>
+							<xsd:element name="nazwisko" type="xsd:string"/>
+							<xsd:element name="adres">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="miejscowosc" type="xsd:string"/>
+										<xsd:element name="ulica" type="xsd:string"/>
+										<xsd:element name="nr-domu" type="xsd:integer"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="telefony">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="tel-stac" type="xsd:integer"/>
+										<xsd:element name="tel-kom" type="xsd:integer"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="plec" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

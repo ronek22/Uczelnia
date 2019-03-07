@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wypozyczalnia>
+	<kasety>
+		<kaseta>
+			<tytul>Matrix</tytul>
+			<id>d4m2</id>
+			<typ>scifi</typ>
+		</kaseta>
+		<kaseta>
+			<tytul>Matrix</tytul>
+			<id>g66l</id>
+			<typ>scifi</typ>
+		</kaseta>
+		<kaseta>
+			<tytul>Grizzly Man</tytul>
+			<id>fg5z</id>
+			<typ>dokumentarny</typ>
+		</kaseta>
+		<kaseta>
+			<tytul>Pluton</tytul>
+			<id>r2zz</id>
+			<typ>wojenny</typ>
+		</kaseta>
+		<kaseta>
+			<tytul>Szeregowiec Ryan</tytul>
+			<id>ju71</id>
+			<typ>wojenny</typ>
+		</kaseta>
+	</kasety>
+	<wypozyczenia>
+		<wypozyczenie idKasety="ju71">
+			<dataWypozyczenia>2014-04-08</dataWypozyczenia>
+			<dataZwrotu>2014-04-10</dataZwrotu>
+		</wypozyczenie>
+		<wypozyczenie idKasety="g66l">
+			<dataWypozyczenia>2014-05-18</dataWypozyczenia>
+			<dataZwrotu>2014-05-19</dataZwrotu>
+		</wypozyczenie>
+		<wypozyczenie idKasety="ju71">
+			<dataWypozyczenia>2014-06-08</dataWypozyczenia>
+			<dataZwrotu>2014-06-10</dataZwrotu>
+		</wypozyczenie>
+	</wypozyczenia>
+</wypozyczalnia>

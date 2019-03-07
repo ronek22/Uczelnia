@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified">
+<xs:element name="kody">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="grupa1" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="kod1" type="xs:string"/>
+            <xs:element name="kod2" type="xs:string"/>
+            <xs:element name="kod3" type="xs:string"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="grupa2" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="kod1" type="xs:string"/>
+            <xs:element name="kod2" type="xs:string"/>
+            <xs:element name="kod3" type="xs:string"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="grupa3" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="kod1" type="xs:string" maxOccurs="1"/>
+            <xs:choice>
+             <xs:element name="kod2" type="xs:string"/>
+             <xs:element name="kod3" type="xs:string"/>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="grupa4" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="kod1" type="xs:string" minOccurs="2" maxOccurs="unbounded"/>
+            <xs:element name="kod2" type="xs:string" maxOccurs="4"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="grupa5" minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="kod1" type="xs:string"/>
+            <xs:element name="kod2" type="xs:string"/>
+            <xs:element name="kod3" type="xs:string"/>
+        </xs:choice>
+      </xs:complexType>
+      </xs:element>  
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

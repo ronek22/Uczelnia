@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<listastud>
+	<student>
+			<nazwisko>Kowalska</nazwisko>
+			<imie>Anna</imie>
+			<nrindeksu>30123</nrindeksu>
+			<dataurodzenia>1995-02-18</dataurodzenia>
+			<sredniaocen>4.45</sredniaocen>
+			<stronadomowa>http://anka.kowalska.wp.pl</stronadomowa>
+	</student>
+	<student>
+			<nazwisko>Marcinkowski</nazwisko>
+			<imie>Jan</imie>
+			<nrindeksu>30231</nrindeksu>
+			<dataurodzenia>1995-08-23</dataurodzenia>
+			<sredniaocen>4.33</sredniaocen>
+			<stronadomowa>http://jannnn0001.onet.pl</stronadomowa>
+	</student>
+	<student>
+			<nazwisko>Trybulski</nazwisko>
+			<imie>Paweł</imie>
+			<nrindeksu>30731</nrindeksu>
+			<dataurodzenia>1995-12-04</dataurodzenia>
+			<sredniaocen>3.91</sredniaocen>
+			<stronadomowa>http://trybolxxx.interia.pl</stronadomowa>
+	</student>
+</listastud>
+
+
+
+
+		
+
+
+
+
+	

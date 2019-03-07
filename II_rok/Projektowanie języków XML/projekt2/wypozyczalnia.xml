@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wypozyczalnia>
+  <samochody>
+  	<samochod>
+  		<nr-rej>CBR5310</nr-rej>
+  		<marka>Opel</marka>
+  		<model>Astra</model>
+  		<nadwozie>Kombi</nadwozie>
+  		<rocznik>1995</rocznik>
+  		<kolor>Zielony</kolor>
+  		<ilosc-miejsc>5</ilosc-miejsc>
+  		<moc>100</moc>
+  	</samochod>
+  	<samochod>
+  		<nr-rej>GDA2151</nr-rej>
+  		<marka>Mazda</marka>
+  		<model>MX-5</model>
+  		<nadwozie>Roadster</nadwozie>
+  		<rocznik>2014</rocznik>
+  		<kolor>Czerwony</kolor>
+  		<ilosc-miejsc>2</ilosc-miejsc>
+  		<moc>165</moc>
+  	</samochod>
+  	<samochod>
+  		<nr-rej>GD22102</nr-rej>
+  		<marka>Volkswagen</marka>
+  		<model>Golf</model>
+  		<nadwozie>Hatchback</nadwozie>
+  		<rocznik>2012</rocznik>
+  		<kolor>Czarny</kolor>
+  		<ilosc-miejsc>5</ilosc-miejsc>
+  		<moc>230</moc>
+  	</samochod>
+  </samochody>
+
+  <osoby>
+  	<osoba plec="m">
+      <zdjecie>osob.jpg</zdjecie>
+  		<imie>Janek</imie>
+  		<nazwisko>Kowalski</nazwisko>
+      <data-ur>1992-01-20</data-ur>
+  		<adres>
+  	      <miejscowosc>Gdańsk</miejscowosc>
+  	      <ulica>Akacjowa</ulica>
+  	      <nr-domu>14</nr-domu>
+      </adres>
+      <login>janek14</login>
+      <hasło>pass321</hasło>
+      <pesel>92012087651</pesel>
+      <nr-dowodu>ABS123456</nr-dowodu>
+      <wypozyczenie>
+        <idPoj>CBR5310</idPoj>
+        <data-wypozyczenia>2014-04-08</data-wypozyczenia>
+        <data-zwrotu>2014-04-16</data-zwrotu>
+      </wypozyczenie>
+  	</osoba>
+  	<osoba plec="k">
+      <zdjecie>dama.jpg</zdjecie>
+  		<imie>Anna</imie>
+  		<nazwisko>Biernik</nazwisko>
+      <data-ur>1983-10-15</data-ur>
+  		<adres>
+  	      <miejscowosc>Gdańsk</miejscowosc>
+  	      <ulica>Staszica</ulica>
+  	      <nr-domu>15</nr-domu>
+      </adres>
+      <login>aniabania</login>
+      <hasło>asnka21</hasło>
+      <pesel>83101587654</pesel>
+      <nr-dowodu>CDE354231</nr-dowodu>
+      <wypozyczenie>
+        <idPoj>GDA2151</idPoj>
+        <data-wypozyczenia>2014-05-20</data-wypozyczenia>
+      	<data-zwrotu>2014-05-30</data-zwrotu>
+      </wypozyczenie>
+  	</osoba>
+  	<osoba plec="m">
+      <zdjecie>man.jpg</zdjecie>
+  		<imie>Adam</imie>
+  		<nazwisko>Kurnik</nazwisko>
+      <data-ur>1980-05-15</data-ur>
+  		<adres>
+  	      <miejscowosc>Warszawa</miejscowosc>
+  	      <ulica>Sienkiewicza</ulica>
+  	      <nr-domu>5</nr-domu>
+      	</adres>
+      	<login>kura22</login>
+      	<hasło>admin2</hasło>
+      	<pesel>80051587427</pesel>
+      	<nr-dowodu>KLS398761</nr-dowodu>
+        <wypozyczenie>
+          <idPoj>GD22102</idPoj>
+        	<data-wypozyczenia>2015-03-08</data-wypozyczenia>
+        	<data-zwrotu>2015-03-12</data-zwrotu>
+        </wypozyczenie>
+        <wypozyczenie>
+          <idPoj>GDA2151</idPoj>
+        	<data-wypozyczenia>2015-05-08</data-wypozyczenia>
+        	<data-zwrotu>2015-05-22</data-zwrotu>
+        </wypozyczenie>
+  	</osoba>
+  </osoby>
+
+
+</wypozyczalnia>

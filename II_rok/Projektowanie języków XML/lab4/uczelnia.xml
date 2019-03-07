@@ -1,0 +1,71 @@
+<!DOCTYPE uczelnia SYSTEM "uczelnia.dtd">
+<uczelnia>
+	<nazwa>Uniwersytet Gdański</nazwa>
+	<rektor>
+		<tytul>Profesor</tytul>
+		<imie>Tadek</imie>
+		<nazwisko>Siemanko</nazwisko>
+	</rektor>
+	<prorektor>
+		<tytul>Doktor</tytul>
+		<imie>Filip</imie>
+		<nazwisko>Sinka</nazwisko>
+	</prorektor>
+	<prorektor>
+		<tytul>Magister</tytul>
+		<imie>Kuba</imie>
+		<nazwisko>Dziekanowski</nazwisko>
+	</prorektor>
+	<wydzial>
+		<nazwa>MFI</nazwa>
+		<dziekan>
+			<tytul>Magister</tytul>
+			<imie>Janek</imie>
+			<nazwisko>Dobrański</nazwisko>
+		</dziekan>
+		<prodziekan>
+			<tytul>Doktorek</tytul>
+			<imie>Eryk</imie>
+			<nazwisko>Erykowski</nazwisko>
+		</prodziekan>
+		<kierunek>
+			<nazwa>Informatyka</nazwa>
+			<kurs>
+				<nazwa>Programista</nazwa>
+				<opis>Testowanie i programowanie</opis>
+				<forma>Stacjonarne</forma>
+				<limit>140</limit>
+			</kurs>
+		</kierunek>
+	</wydzial>
+	<wydzial>
+		<nazwa>Chemia</nazwa>
+		<dziekan>
+			<tytul>Magister</tytul>
+			<imie>Daniel</imie>
+			<nazwisko>Danielski</nazwisko>
+		</dziekan>
+		<prodziekan>
+			<tytul>Doktorek</tytul>
+			<imie>Jan</imie>
+			<nazwisko>Jankowski</nazwisko>
+		</prodziekan>
+		<instytut>
+			<nazwa>Instytut CHemii</nazwa>
+			<dyrektor>
+				<tytul>Doktorek</tytul>
+				<imie>Jerzy</imie>
+				<nazwisko>Jerzykowski</nazwisko>
+			</dyrektor>
+			<katedra>
+				<nazwa>Budowlana</nazwa>
+				<dyrektor>
+					<tytul>Doktorek</tytul>
+					<imie>Dawid</imie>
+					<nazwisko>Dawidowski</nazwisko>
+				</dyrektor>
+			</katedra>
+		</instytut>
+	</wydzial>
+	<biblioteka />
+</uczelnia>

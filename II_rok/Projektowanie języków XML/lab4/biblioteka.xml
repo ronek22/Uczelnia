@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE biblioteka [
+<!ELEMENT biblioteka (ksiazka,ksiazka,ksiazka,ksiazka,ksiazka,dzial,dzial,dzial)>
+<!ELEMENT ksiazka (tytul,autor,opis)>
+<!ATTLIST ksiazka id ID #REQUIRED>
+<!ATTLIST ksiazka dzial IDREF #REQUIRED>
+<!ATTLIST ksiazka oprawa (twarda|miękka) #REQUIRED>
+<!ATTLIST ksiazka opcja CDATA #IMPLIED>
+<!ELEMENT tytul (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT opis (#PCDATA)>
+<!ELEMENT dzial (#PCDATA)>
+<!ATTLIST dzial kod ID #REQUIRED>
+]>
+<biblioteka>
+	<ksiazka id="hp1" dzial="fab" oprawa="twarda" opcja="ebook">
+		<tytul>Harry Potter i Książę Półkrwi</tytul>
+		<autor>Joanne K. Rowling</autor>
+		<opis>Po nieudanej próbie przechwycenia przepowiedni Lord Voldemort jest gotów uczynić wszystko, by zawładnąć światem czarodziejów. Organizuje tajemny zamach na swego przeciwnika, a narzędziem w jego ręku staje się jeden z uczniów. Czy jego plan się powiedzie? Tom szósty przygód Harry′ego Pottera...</opis>
+	</ksiazka>
+	<ksiazka id="asm5" dzial="inf" oprawa="twarda">
+		<tytul>Programowanie Asembler IBM PC</tytul>
+		<autor>Peter Abel</autor>
+		<opis>Ta książka jest zarówno podręcznikiem programowania w języku asemblerowym, jak i wygodnym informatorem. Możesz uczyć się języka od podstaw, analizując przykładowe programy i przerabiając ćwiczenia, które znajdują się na końcu każdego rozdziału oraz w witrynie autora. </opis>
+	</ksiazka>
+	<ksiazka id="lond1" dzial="prz" oprawa="miękka">
+		<tytul>Londyn - przewodnik</tytul>
+		<autor>Kathleen Becker</autor>
+		<opis>Z przewodnikiem z nowej serii "Marco Polo" poznasz Londyn nie tylko czerwonych piętrowych autobusów, wieży Big Bena, kopuły St Paul′s Cathedral i National Gallery.</opis>
+	</ksiazka>
+	<ksiazka id="prjav2" dzial="inf" oprawa="miękka" opcja="ebook">
+		<tytul>Programowanie obiektowe i zdarzeniowe w Javie</tytul>
+		<autor>Krzysztof Barteczko</autor>
+		<opis>W książce przedstawiono zagadnienia programowania obiektowego, współbieżnego, przetwarzania strumieni i kolekcji, a także programowania graficznych interfejsów użytkowania.</opis>
+	</ksiazka>
+	<ksiazka id="kldv3" dzial="zx" oprawa="twarda">
+		<tytul>Kod Leonarda da Vinci</tytul>
+		<autor>Dan Brown</autor>
+		<opis>W Luwrze zostaje popełnione morderstwo. Jego ofiarą jest kustosz. Zwłoki zostają znalezione w pozycji przypominającej sławny rysunek witruwiański, na którym renesansowy artysta przedstawił idealne proporcje ludzkiego ciała. W zbrodnię zamieszany jest - według policji - profesor z Harvardu,...</opis>
+	</ksiazka>
+	<dzial kod="fab">fabularne</dzial>
+	<dzial kod="prz">przewodniki</dzial>
+	<dzial kod="inf">informatyczne</dzial>
+</biblioteka>

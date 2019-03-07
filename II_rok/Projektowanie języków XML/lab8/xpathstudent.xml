@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<studenci>
+	<student indeks="122" plec="k">
+		<imie>Anna</imie>
+		<drugie-imie>Iga</drugie-imie>
+		<nazwisko>Milczak</nazwisko>
+		<data-urodzenia>10-03-1990</data-urodzenia>
+		<studia typ="stacjonarne licencjackie">
+			<wydzial>Matematyki, Fizyki i Informatyki</wydzial>
+			<kierunek>Informatyka</kierunek>
+		</studia>
+	</student>
+	<student indeks="134" plec="m">
+		<imie>Marcin</imie>
+		<nazwisko>Kowalski</nazwisko>
+		<data-urodzenia>18-06-1988</data-urodzenia>
+		<studia typ="stacjonarne magisterskie">
+			<wydzial>Matematyki, Fizyki i Informatyki</wydzial>
+			<kierunek>Informatyka</kierunek>
+		</studia>
+	</student>
+	<student indeks="139" plec="m">
+		<imie>Jan</imie>
+		<drugie-imie>Hieronim</drugie-imie>
+		<nazwisko>Nowak</nazwisko>
+		<data-urodzenia>18-12-1990</data-urodzenia>
+		<studia typ="niestacjonarne licencjackie">
+			<wydzial>Matematyki, Fizyki i Informatyki</wydzial>
+			<kierunek>Matematyka</kierunek>
+		</studia>
+	</student>
+	<student indeks="204" plec="k">
+		<imie>Magdalena</imie>
+		<nazwisko>Kozak</nazwisko>
+		<data-urodzenia>02-12-1987</data-urodzenia>
+		<studia typ="niestacjonarne magisterskie">
+			<wydzial>Matematyki, Fizyki i Informatyki</wydzial>
+			<kierunek>Matematyka</kierunek>
+		</studia>
+	</student>
+</studenci>

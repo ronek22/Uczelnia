@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:simpleType name="imieType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="3" />
+    <xs:maxLength value="20" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="nazwType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="2" />
+    <xs:maxLength value="30" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="loginType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="5" />
+    <xs:maxLength value="40" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="hasloType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="6" />
+    <xs:maxLength value="40" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="peselType">
+  <xs:restriction base="xs:string">
+    <xs:pattern
+    				value="[0-9]{2}([0][1-9]|[1][012])([0][1-9]|[12][0-9]|[3][01])[0-9]{5}" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="dowodType">
+  <xs:restriction base="xs:string">
+    <xs:pattern
+    				value="[A-Z]{3}[0-9]{6}" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="dateType">
+  <xs:restriction base="xs:date">
+  </xs:restriction>
+</xs:simpleType>
+
+
+<xs:simpleType name="plecType">
+  <xs:restriction base="xs:string">
+        <xs:pattern value="m|k"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<xs:complexType name="adresType">
+  <xs:sequence>
+    <xs:element name="miejscowosc" type="xs:string"/>
+    <xs:element name="ulica" type="xs:string"/>
+    <xs:element name="nr-domu" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="nrRejType">
+  <xs:restriction base="xs:string">
+    <xs:length value="7" />
+    <xs:pattern value="[A-Z]{3}[0-9]{4}" />
+    <xs:pattern value="[A-Z]{2}[0-9]{5}" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="osobaType">
+  <xs:sequence>
+    <xs:element name="imie" type="imieType" maxOccurs="2"/>
+    <xs:element name="nazwisko" type="nazwType"/>
+    <xs:element name="adres" type="adresType"/>
+    <xs:element name="login" type="loginType"/>
+    <xs:element name="hasło" type="hasloType"/>
+    <xs:element name="pesel" type="peselType"/>
+    <xs:element name="nr-dowodu" type="dowodType"/>
+    <xs:element name="data-wypozyczenia" type="dateType"/>
+    <xs:element name="data-zwrotu" type="dateType"/>
+  </xs:sequence>
+    <xs:attribute name="plec" type="plecType"/>
+    <xs:attribute name="idPoj" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="osobyType">
+  <xs:sequence>
+    <xs:element name="osoba" type="osobaType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+
+
+<xs:simpleType name="nadwozieType">
+  <xs:restriction base="xs:string">
+        <xs:pattern value="Roadster|Kombi|Sedan|SUV|Kabriolet|Limuzyna|Coupe|Hatchback"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="markaType">
+  <xs:restriction base="xs:string">
+        <xs:pattern value="Volkswagen|Mazda|Fiat|Opel|Nissan|Porsche|Ferrari|Honda"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="rocznikType">
+  <xs:restriction base="xs:integer">
+    <xs:minInclusive value="1900"/>
+    <xs:maxInclusive value="2017"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="kolorType">
+  <xs:restriction base="xs:string">
+        <xs:pattern value="Czerwony|Srebrny|Czarny|Biały|Niebieski|Zielony"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="pasazerType">
+  <xs:restriction base="xs:integer">
+    <xs:minInclusive value="2"/>
+    <xs:maxInclusive value="7"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="mocType">
+  <xs:restriction base="xs:integer">
+    <xs:minInclusive value="20"/>
+    <xs:maxInclusive value="1000"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="samochodType">
+  <xs:sequence>
+    <xs:element name="nr-rej" type="xs:string"/>
+    <xs:element name="marka" type="markaType"/>
+    <xs:element name="model" type="xs:string"/>
+    <xs:element name="nadwozie" type="nadwozieType"/>
+    <xs:element name="rocznik" type="rocznikType"/>
+    <xs:element name="kolor" type="kolorType"/>
+    <xs:element name="ilosc-miejsc" type="pasazerType"/>
+    <xs:element name="moc" type="mocType"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="samochodyType">
+  <xs:sequence>
+    <xs:element name="samochod" type="samochodType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+
+
+<xs:element name="samochody" type="samochodyType">
+  <xs:key name="rejR">
+    <xs:selector xpath="samochod" />
+    <xs:field xpath="nr-rej" />
+  </xs:key>
+</xs:element>
+
+<xs:element name="osoby" type="osobyType">
+  <xs:keyref name="nrRejRef" refer="rejR">
+      <xs:selector xpath="osoba"/>
+      <xs:field xpath="@idPoj"/>
+    </xs:keyref>
+</xs:element>
+
+</xs:schema>

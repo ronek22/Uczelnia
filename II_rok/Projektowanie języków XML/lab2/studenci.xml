@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="studenci.css" ?>
+<listaStudentow>
+	<grupa nr="1">
+		<student>
+			<nazwisko>Kowalski</nazwisko>
+			<imie>Jan</imie>
+			<nrIndeksu>12345</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Lipińska</nazwisko>
+			<imie>Ewa</imie>
+			<nrIndeksu>12421</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Woźniak</nazwisko>
+			<imie>Mateusz</imie>
+			<nrIndeksu>12423</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Chmielek</nazwisko>
+			<imie>Bartłomiej</imie>
+			<nrIndeksu>12425</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Żurek</nazwisko>
+			<imie>Jan</imie>
+			<nrIndeksu>12427</nrIndeksu>
+		</student>
+	</grupa>
+	<grupa nr="2">
+		<student>
+			<nazwisko>Malinowska</nazwisko>
+			<imie>Katarzyna</imie>
+			<nrIndeksu>12346</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Krowicki</nazwisko>
+			<imie>Euzebiusz</imie>
+			<nrIndeksu>12429</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Michnik</nazwisko>
+			<imie>Tytus</imie>
+			<nrIndeksu>12445</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Kłosik</nazwisko>
+			<imie>Szczepan</imie>
+			<nrIndeksu>12446</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Palicka</nazwisko>
+			<imie>Zofia</imie>
+			<nrIndeksu>12447</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Szczerbak</nazwisko>
+			<imie>Paweł</imie>
+			<nrIndeksu>12457</nrIndeksu>
+		</student>
+	</grupa>
+	<grupa nr="3">
+		<student>
+			<nazwisko>Ogoński</nazwisko>
+			<imie>Michał</imie>
+			<nrIndeksu>12456</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Szynka</nazwisko>
+			<imie>Marian</imie>
+			<nrIndeksu>12452</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Mączna</nazwisko>
+			<imie>Izabela</imie>
+			<nrIndeksu>12453</nrIndeksu>
+		</student>
+		<student>
+			<nazwisko>Woźnowski</nazwisko>
+			<imie>Mikołaj</imie>
+			<nrIndeksu>12454</nrIndeksu>
+		</student>
+	</grupa>
+</listaStudentow>

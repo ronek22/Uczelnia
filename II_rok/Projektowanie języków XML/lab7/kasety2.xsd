@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:simpleType name="idNazwa">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="4" />
+    <xs:maxLength value="4" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="dateType">
+  <xs:restriction base="xs:date">
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="rodzajType">
+  <xs:restriction base="xs:string">
+  		  <xs:pattern value="wojenny|dokumentarny|scifi"/>
+  	</xs:restriction>
+</xs:simpleType>
+
+
+
+<xs:complexType name="kasetaType">
+  <xs:sequence>
+    <xs:element name="tytul" type="xs:string"/>
+    <xs:element name="id" type="idNazwa"/>
+    <xs:element name="typ" type="rodzajType"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="kasetyType">
+  <xs:sequence>
+    <xs:element name="kaseta" type="kasetaType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="wypozyczenieType">
+  <xs:sequence>
+    <xs:element name="dataWypozyczenia" type="dateType"/>
+    <xs:element name="dataZwrotu" type="dateType"/>
+  </xs:sequence>
+  <xs:attribute name="idKasety" type="idNazwa" />
+</xs:complexType>
+
+<xs:complexType name="wypozyczeniaType">
+  <xs:sequence>
+    <xs:element name="wypozyczenie" type="wypozyczenieType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="wypozyczalniaType">
+  <xs:sequence>
+    <xs:element name="kasety" type="kasetyType" />
+    <xs:element name="wypozyczenia" type="wypozyczeniaType" />
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="wypozyczalnia" type="wypozyczalniaType">
+  <xs:key name="kasetyR">
+    <xs:selector xpath="kasety/kaseta"/>
+    <xs:field xpath="id"/>
+  </xs:key>
+  <xs:keyref name="kasetyRef" refer="kasetyR">
+      <xs:selector xpath="wypozyczenia/wypozyczenie"/>
+      <xs:field xpath="@idKasety"/>
+    </xs:keyref>
+</xs:element>
+
+</xs:schema>

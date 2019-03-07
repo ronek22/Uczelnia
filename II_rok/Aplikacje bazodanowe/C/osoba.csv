@@ -1,0 +1,11 @@
+id;imie;nazwisko;ulica;nr_domu;miasto;kod
+1;Jan;Kowalski;Akacjowa;14;Brodnica;87-300
+2;Piotr;Nowak;Nowa;23;Wejherowo;84-200
+3;Jakub;Miodek;Mickiewicza;22
+4;Jan;Janek;Norwida;12;Gdańsk;80-375;ToNieWejdzie
+5;Robert Andrzej;Porzeczka;Długa;15;Warszawa;00-000
+6;Karol;Pstrąg;Wielka;22;Warszawa;00-000
+7;Karolina;Mąka;Nieborowska;21;Gdańsk;80-034
+8;Milena;Głowa;Piłkarska;12;Gdańsk;80-180
+9;Tymoteusz;Trzepak;Góralska;5;Gdańsk;80-292
+10;Marcin;Grzebień;Kubusia Puchatka;20;Gdańsk;80-308

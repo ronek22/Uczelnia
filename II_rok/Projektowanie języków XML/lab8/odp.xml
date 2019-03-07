@@ -1,0 +1,20 @@
+1. studenci/student[imie='Jan']/*
+2. studenci/student[@plec='k']
+3. studenci/student[not(drugie-imie)]
+4. studenci/student[studia/kierunek='Informatyka']
+5. studenci/student[@plec='m' and studia/kierunek='Matematyka']
+6. studenci/student[3]/
+7. studenci/student[position() mod 2 = 0]
+8. studenci/student[nazwisko='Nowak']/studia/kierunek
+9. studenci/student[studia[starts-with(@typ,'stacjonarne')]]
+10. studenci/student[]/@indeks
+11. studenci/student[imie='Marcin']/following-sibling::student[1]/@indeks
+12. studenci/student[@indeks!=122]/@indeks
+13. studenci/student[@indeks<135]/@indeks
+14. studenci/student[@indeks<135 and @indeks>130]/@indeks
+15. sum(studenci/student/@indeks)
+16. studenci/student[contains(data-urodzenia,'-12-')]/nazwisko
+17. ceiling(studenci/student[nazwisko='Nowak']/@indeks div (studenci/student[nazwisko='Kowalski']/@indeks))
+18. count(studenci/student[starts-with(nazwisko,'K')])
+19. concat('Ostatni student: ', studenci/student[last()]/imie, ' ', studenci/student[last()]/nazwisko)
+20. sum(studenci/student[contains(data-urodzenia,'1990')]/string-length(imie))

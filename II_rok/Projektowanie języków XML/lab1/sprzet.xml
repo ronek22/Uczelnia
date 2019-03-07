@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sprzet>
+  <komputer nr="1">
+    <procesor>
+      Intel Pentium
+      <taktowanie><!-- w ghz -->
+        2
+      </taktowanie>
+    </procesor>
+    <kartGraficzna>AMD RADEON HD5670</kartGraficzna>
+    <iloscRam>4</iloscRam>
+    <typDysku>
+      HDD
+      <rozmiarGB>1000</rozmiarGB>
+    </typDysku>
+  </komputer>
+
+  <komputer nr="2">
+    <procesor>
+      Intel Xeon E3-1230
+      <taktowanie>
+        3.2
+      </taktowanie>
+    </procesor>
+    <kartGraficzna>Nvidia GTX 660</kartGraficzna>
+    <iloscRam>16</iloscRam>
+    <typDysku>
+      SSD
+      <rozmiarGB>256</rozmiarGB>
+    </typDysku>
+  </komputer>
+
+  <komputer nr="3">
+    <procesor>
+      Intel i5 6600K
+      <taktowanie>
+        3.5
+      </taktowanie>
+    </procesor>
+    <kartGraficzna>Nvidia GTX 1080</kartGraficzna>
+    <iloscRam>8</iloscRam>
+    <typDysku>
+      HDD
+      <rozmiarGB>2048</rozmiarGB>
+    </typDysku>
+  </komputer>
+</sprzet>

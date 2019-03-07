@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="wzory">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="dzialanie1" maxOccurs="unbounded">
+				  <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					  <!--Regex dla prostych równań z dodawaniem typu: liczba+liczba=liczba np.
+					  123+30=23424 lub 004343+0=232.
+					  Zakładadamy, że liczby są naturalne
+					  http://www.regular-expressions.info/characters.html
+					  http://www.regular-expressions.info/repeat.html
+					  http://www.regular-expressions.info/shorthand.html
+					  -->
+
+					  <xsd:pattern value="[0-9]+\+[0-9]+=[0-9]+"/>
+					</xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="dzialanie2" maxOccurs="unbounded">
+				  <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					  <!--J.w. ale działania mają spacje przy plusie
+					  i znaku równości i można zamieścić wiele działań po średniku,
+					  akceptowany string to np. cała poniższa linijka razem wzięta:
+					  123 + 30 = 23424; 004343 + 0 = 232; 5 + 5 = 10
+					  -->
+					  <xsd:pattern value="([0-9]+\s[+]\s[0-9]+\s[=]\s[0-9]+[;]\s)+"/>
+					</xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="kod"  maxOccurs="unbounded">
+				  <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					  <!--Regex dla pewnych siedmioznakowych kodów: kod zaczyna się literą K,
+					  po której występuje dowolna mała litera,
+					  trzecią literą jest dowolny znak różny od wielkich liter,
+					  czwarty, piąty i szósty znak to cyfra, a siódmy to litera A lub B.
+					  http://www.regular-expressions.info/charclass.html -->
+					  <xsd:pattern value="K[a-z][^(A-Z)][0-9]{3}[A-B]"/>
+					</xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="haslo"  maxOccurs="unbounded">
+				  <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					  <!--Regex dla stringa od 3 do 10 znaków ASCII, ale nie zawierający żadnych cyfr
+					  http://www.regular-expressions.info/charclasssubtract.html -->
+					  <!--<xsd:pattern value="...."/>-->
+					</xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="liczba"  maxOccurs="unbounded">
+				  <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					  <!--Regex dla liczb parzystych, które mają wewnątrz przynajmniej dwa zera
+					  np. 10102, 100, 00, 0000234, 105790, 60606
+					  -->
+					  <!--<xsd:pattern value="...."/>-->
+					</xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<biblioteka>
+	<ksiazka>
+		<tytul podtytul='Beginner's guide for XML'>Przewodnik dla początkującego w XML</tytul>
+		<autor>John McNuggets</autor>
+		<opis>W książce dowiesz się wielu ciekawych rzeczy o języku XML np. o znacznikach czyli wyrażeniach postaci <abc>, i wielu innych</opis>
+		<cena waluta="zł">36.90</cena>
+	</ksiazka>
+	<ksiazka>
+		<tytul>Krzyżacy<autor>
+		</tytul>Henryk Sienkiewicz</autor>
+		<opis>Polacy i Krzyżacy - historia w wydaniu fabularnym!<opis>
+		<cena waluta='zł'/>15.00</cena>
+	</ksiazka>
+</biblioteka>
