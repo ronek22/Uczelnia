@@ -1,0 +1,31 @@
+graph drzewo{
+size = "2,20"0 [shape=circle, color=black, label="31 "]
+1 [shape=circle, color=red, label="20 "]
+0 -- 1 ;
+2 [shape=circle, color=black, label="8 "]
+1 -- 2 ;
+3 [shape=circle, color=red, label="5 "]
+2 -- 3 ;
+4 [shape=circle, style=invisible, label="0 "]
+3 -- 4 [style=invis];
+ 5 [shape=circle, style=invisible, label="0 "]
+3 -- 5 [style=invis];
+ 6 [shape=circle, color=red, label="10 "]
+2 -- 6 ;
+7 [shape=circle, style=invisible, label="0 "]
+6 -- 7 [style=invis];
+ 8 [shape=circle, style=invisible, label="0 "]
+6 -- 8 [style=invis];
+ 9 [shape=circle, color=black, label="22 "]
+1 -- 9 ;
+10 [shape=circle, style=invisible, label="0 "]
+9 -- 10 [style=invis];
+ 11 [shape=circle, style=invisible, label="0 "]
+9 -- 11 [style=invis];
+ 12 [shape=circle, color=black, label="38 "]
+0 -- 12 ;
+13 [shape=circle, style=invisible, label="0 "]
+12 -- 13 [style=invis];
+ 14 [shape=circle, style=invisible, label="0 "]
+12 -- 14 [style=invis];
+ }
